@@ -1,6 +1,60 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-body.dark {
-    background: #000;
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+body, header {
+    background: #f9f9f9;
+    color: #000;
+}
+body.dark, .dark header {
+    background: #222;
+    color: #eee;
+}
+
+h1 {
+    @apply text-4xl;
+    @apply font-bold;
+}
+h2 {
+    @apply text-3xl;
+}
+h3 {
+    @apply text-2xl;
+}
+h4 {
+    @apply text-xl;
+}
+h5 {
+    @apply text-lg;
+}
+
+.mainColor {
+    color: #75f;
+}
+.dark .mainColor {
+    color: #a8f;
+}
+.mainBg {
+    background: #85f;
+}
+.dark .mainBg {
+    background: #73f;
+}
+label, input, p, button {
+    @apply text-[16px];
+    @apply lg:text-[12px];
+}
+
+.dark input {
+    color: #eee;
+}
+input {
+    color: #000;
+}
+button {
+    cursor: pointer;
 }

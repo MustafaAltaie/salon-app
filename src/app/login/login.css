@@ -1,0 +1,12 @@
+.loginWrapper {
+    overflow-x: hidden;
+}
+.loginWrapper input {
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 0.5px #00000055;
+}
+.dark .loginWrapper input {
+    border: solid 0.5px #ffffff55;
+    background: #292929;
+}
