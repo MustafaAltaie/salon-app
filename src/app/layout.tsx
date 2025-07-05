@@ -24,6 +24,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body className={dosis.className}>
         <Providers>{children}</Providers>

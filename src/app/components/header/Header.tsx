@@ -49,23 +49,22 @@ const navList: navProps[] = [
     },
 ];
 
-const Header = () => {
+interface Props {
+    laptop: boolean
+}
+
+const Header = ({ laptop }: Props) => {
     const [dark, setDark] = useState(true);
     const [nav, setNav] = useState(false);
-    const [laptop, setLaptop] = useState(false);
-    const [mounted, setMounted] = useState(false);
     const router = useRouter();
     const pathname = usePathname();
 
     useEffect(() => {
-        if (typeof window === 'undefined') return;
-        setMounted(true);
         const checkSize = () => {
-            setLaptop(window.innerWidth >= 1024);
-            setNav(window.innerWidth >= 1024);
+          setNav(window.innerWidth >= 1024);
         }
         checkSize();
-
+    
         window.addEventListener('resize', checkSize);
         return () => window.removeEventListener('resize', checkSize);
     }, []);
@@ -74,11 +73,9 @@ const Header = () => {
         document.body.classList.toggle('dark', dark);
     }, [dark]);
 
-    if (!mounted) return null;
-
     return (
         <>
-        <header className={`fixed w-full border-b-[0.5px] border-[#00000077] dark:border-[#ffffff77] flex ${laptop ? 'flex-row justify-between items-center p-3' : 'flex-col'}`}>
+        <header className={`fixed z-[999] w-full border-b-[0.5px] border-[#00000077] dark:border-[#ffffff77] flex ${laptop ? 'flex-row justify-between items-center p-3' : 'flex-col'}`}>
             <div className={`${laptop ? 'p-2' : 'p-6'}`}>
                 <div className='flex items-center justify-between'>
                     <div className='cursor-pointer flex items-center gap-7'>
@@ -113,7 +110,7 @@ const Header = () => {
                 </ul>
             </nav>
         </header>
-        <div className={`${laptop ? 'h-[67px]' : 'h-[75px]'} mainBg`}></div>
+        <div className={`${laptop ? 'h-[62px]' : 'h-[68px]'} mainBg`}></div>
         </>
     )
 }
