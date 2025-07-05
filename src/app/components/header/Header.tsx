@@ -71,6 +71,13 @@ const Header = ({ laptop }: Props) => {
 
     useEffect(() => {
         document.body.classList.toggle('dark', dark);
+        if (dark) {
+            document.body.classList.add('darkMode');
+            document.body.classList.remove('lightMode');
+        } else {
+            document.body.classList.remove('darkMode');
+            document.body.classList.add('lightMode');
+        }
     }, [dark]);
 
     return (

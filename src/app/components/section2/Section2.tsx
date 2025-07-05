@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-interface StuffProps {
+interface StafProps {
     id: string
     name: string
     position: string
@@ -10,30 +10,30 @@ interface StuffProps {
 }
 
 const Section2 = () => {
-    const [stuff] = useState<StuffProps[]>([
+    const [staf] = useState<StafProps[]>([
         {
             id: '1',
             name: 'John Berkdar',
             position: 'Massage Therapist',
-            image: '/images/stuff/1.jpg',
+            image: '/images/staf/1.jpg',
         },
         {
             id: '2',
             name: 'Nina Forslund',
             position: 'Makeup Artist',
-            image: '/images/stuff/2.jpg',
+            image: '/images/staf/2.jpg',
         },
         {
             id: '3',
             name: 'Sara Anderson',
             position: 'Hair dresser',
-            image: '/images/stuff/3.jpg',
+            image: '/images/staf/3.jpg',
         },
         {
             id: '4',
             name: 'Jessica Wistler',
             position: 'Hair dresser',
-            image: '/images/stuff/4.jpg',
+            image: '/images/staf/4.jpg',
         },
     ]);
 
@@ -48,12 +48,12 @@ const Section2 = () => {
                 <h2 className='text-black' style={{ fontFamily: '"Luxurious Script", cursive' }}>Meet the artists</h2>
                 <h6 className='text-black'>Passionate about beauty. Experts in precision</h6>
                 <div className='flex flex-wrap gap-[10px] px-5'>
-                    {stuff.map(worker =>
+                    {staf.map(worker =>
                     <div key={worker.id} className='mt-5 flex flex-col items-center' style={{ width: 'calc(100%/4 - 30px/4)' }}>
                         <Image
                             className='rounded-full w-[80px] h-[80px] object-cover'
                             src={worker.image}
-                            alt='Stuff'
+                            alt='Staf'
                             width={100}
                             height={100}
                         />

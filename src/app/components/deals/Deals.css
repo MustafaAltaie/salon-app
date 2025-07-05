@@ -1,0 +1,17 @@
+.dealsWrapper > div:nth-child(odd) > .dealImageWrapper {
+    order: 1;
+    background: linear-gradient(270deg, #EEE8DC 70%, #aa98dd 30%);
+}
+.darkMode .dealsWrapper > div:nth-child(odd) > .dealImageWrapper {
+    order: 1;
+    background: linear-gradient(270deg, #252525 70%, #64a 30%);
+}
+
+.dealsWrapper > div:nth-child(even) > .dealImageWrapper {
+    order: 0;
+    background: linear-gradient(90deg, #EEE8DC 70%, #aa98dd 30%);
+}
+.darkMode .dealsWrapper > div:nth-child(even) > .dealImageWrapper {
+    order: 0;
+    background: linear-gradient(90deg, #252525 70%, #64a 30%);
+}
