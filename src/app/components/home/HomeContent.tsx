@@ -36,10 +36,10 @@ const womanList: HaircutProps[] = [
 const Home = ({ laptop }: Props) => {
     return (
         <section>
-            <div className={`gradientBg flex justify-center items-end bg-[#f9f9f9] dark:bg-[#222] ${laptop ? 'h-[400px]' : 'h-[600px]'}`}>
+            <div className={`gradientBg flex justify-center items-end ${laptop ? 'h-[400px]' : 'h-[600px]'}`}>
                 <Image
-                    src='/images/empty.png'
-                    className={`brightness-80 w-[90%] object-contain ${laptop ? 'object-center h-[100%]' : 'h-[85%]'}`}
+                    src='/images/empty1.png'
+                    className={`brightness-80 w-[90%] object-cover ${laptop ? 'object-center h-[100%]' : 'h-[85%]'}`}
                     alt='Home image'
                     width={700}
                     height={700}

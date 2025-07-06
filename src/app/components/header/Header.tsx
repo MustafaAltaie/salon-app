@@ -99,9 +99,9 @@ const Header = ({ laptop }: Props) => {
                     {/* nav toggle */}
                     {!laptop &&
                     <div className='flex flex-col justify-between w-6 h-4' onClick={() => setNav(!nav)}>
-                        <div className={`transition w-full h-[1px] bg-black dark:bg-white ${nav ? 'rotate-z-45 translate-y-[7.5px]' : 'rotate-z-0'}`}></div>
-                        <div className={`transition w-full h-[1px] bg-black dark:bg-white ${nav ? 'opacity-0' : 'opacity-100'}`}></div>
-                        <div className={`transition w-full h-[1px] bg-black dark:bg-white ${nav ? '-rotate-z-45 -translate-y-[7.5px]' : 'rotate-z-0'}`}></div>
+                        <div className={`transition duration-500 w-full h-[1px] bg-black dark:bg-white ${nav ? 'rotate-z-45 translate-y-[7.5px]' : 'rotate-z-0'}`}></div>
+                        <div className={`transition duration-500 w-full h-[1px] bg-black dark:bg-white ${nav ? 'opacity-0' : 'opacity-100'}`}></div>
+                        <div className={`transition duration-500 w-full h-[1px] bg-black dark:bg-white ${nav ? '-rotate-z-45 -translate-y-[7.5px]' : 'rotate-z-0'}`}></div>
                     </div>}
                 </div>
             </div>
