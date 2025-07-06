@@ -4,6 +4,7 @@ import Header from './components/header/Header';
 import HomeContent from './components/home/HomeContent';
 import Section2 from './components/section2/Section2';
 import Deals from './components/deals/Deals';
+import Review from './components/review/Review';
 
 const Home = () => {
   const [laptop, setLaptop] = useState(false);
@@ -30,6 +31,7 @@ const Home = () => {
       <HomeContent laptop={laptop} />
       <Section2 />
       <Deals />
+      <Review />
     </main>
     </>
   )
