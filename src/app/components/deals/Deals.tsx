@@ -57,8 +57,9 @@ const Deals = () => {
                 {deals.map((item, index) =>
                 <div key={item.id} className='border-t-[0.5px] border-[#00000055] dark:border-[#ffffff77] flex items-center bg-[#ccc0a8] dark:bg-[#393939]'>
                     <div className='dealImageWrapper w-1/2 p-5'>
-                        <div className={`border-[0.5px] overflow-hidden ${index % 2 === 0 ? 'rounded-tr-[50px] rounded-br-[50px]' : 'rounded-tl-[50px] rounded-bl-[50px]'}`}>
+                        <div className={`h-[120px] border-[0.5px] overflow-hidden ${index % 2 === 0 ? 'rounded-tr-[50px] rounded-br-[50px]' : 'rounded-tl-[50px] rounded-bl-[50px]'}`}>
                             <Image
+                                className='h-full object-cover'
                                 src={item.image}
                                 alt='Deals'
                                 width={200}
@@ -67,7 +68,7 @@ const Deals = () => {
                             />
                         </div>
                     </div>
-                    <div className={`dealDetailsWrapper w-1/2 ${index % 2 === 0 ? 'pl-[20px]' : 'pr-[20px]'}`}>
+                    <div className={'dealDetailsWrapper w-1/2 px-[20px]'}>
                         <div className={`${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                             <p className='opacity-80 dark:opacity-90 text-[#154ccb] dark:text-[#c18b55]'>{item.title}</p>
                             <h6 className='opacity-70 dark:opacity-50'>{item.descrition}</h6>
