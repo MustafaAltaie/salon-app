@@ -11,7 +11,7 @@ const LoginForm = ({ setLogin, laptop }: Props) => {
     const [show, setShow] = useState(false);
 
     return (
-        <form className='border-[0.5px] border-[#00000077] dark:border-[#ffffff77] p-4 rounded-3xl flex flex-col gap-4 lg:gap-3'>
+        <form className={`${laptop && 'absolute top-1/2 -translate-y-1/2'} border-[0.5px] border-[#00000077] dark:border-[#ffffff77] p-5 rounded-3xl flex flex-col gap-4 lg:gap-3`}>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
                     <EnvelopeIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor`} />

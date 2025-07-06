@@ -33,7 +33,7 @@ const Login = () => {
 
     return (
         <>
-        <Header />
+        <Header laptop={laptop} />
         <div className='loginWrapper flex flex-col justify-center items-center p-5 gap-10'>
             {!laptop && <h1 className='mt-5'>{login ? 'Sign in' : 'Sign up'}</h1>}
             <div className='lg:w-[40%] w-full'>
