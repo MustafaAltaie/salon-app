@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/24/solid';
 
+interface Props {
+    laptop: boolean
+}
+
 interface ReviewProps {
     id: string
     name: string
@@ -11,7 +15,7 @@ interface ReviewProps {
     rate: number
 }
 
-const Review = () => {
+const Review = ({ laptop }: Props) => {
     const [reviews] = useState<ReviewProps[]>([
         {
             id: '1',
@@ -41,10 +45,10 @@ const Review = () => {
 
     return (
         <section className='border-t-[0.5px] border-b-[0.5px]'>
-            <div className='flex flex-wrap gap-[10px] p-7'>
+            <div className={`flex flex-wrap gap-[10px] p-7 ${laptop && 'w-[40%] mx-auto'}`}>
                 {/* review */}
                 {reviews.map(review =>
-                <div key={review.id} className='flex flex-col justify-between gap-1 bg-[#00000018] p-3 dark:bg-[#ffffff11]' style={{ width: 'calc(100%/3 - 20px/3)' }}>
+                <div key={review.id} className='flex flex-col justify-between bg-[#00000018] p-3 dark:bg-[#ffffff11]' style={{ width: 'calc(100%/3 - 20px/3)' }}>
                     {/* header */}
                     <div className='flex items-center gap-2'>
                         <div>
@@ -63,7 +67,7 @@ const Review = () => {
                         </div>
                     </div>
                     {/* middle */}
-                    <p style={{ fontSize: '8px', opacity: '0.6', lineHeight: '8px' }}>{review.comment}</p>
+                    <p style={{ fontSize: '8px', opacity: '0.6', lineHeight: '8px', marginTop: '5px', marginBottom: '2px' }}>{review.comment}</p>
                     {/* footer */}
                     <div className='flex justify-between items-end'>
                         <h6 className='text-[#0041aa] dark:text-[#a70]' style={{ fontSize: '8px' }}>Review date:</h6>

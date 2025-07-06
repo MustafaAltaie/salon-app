@@ -5,6 +5,7 @@ import HomeContent from './components/home/HomeContent';
 import Section2 from './components/section2/Section2';
 import Deals from './components/deals/Deals';
 import Review from './components/review/Review';
+import Footer from './components/footer/Footer';
 
 const Home = () => {
   const [laptop, setLaptop] = useState(false);
@@ -29,10 +30,11 @@ const Home = () => {
     <Header laptop={laptop} />
     <main>
       <HomeContent laptop={laptop} />
-      <Section2 />
-      <Deals />
-      <Review />
+      <Section2 laptop={laptop} />
+      <Deals laptop={laptop} />
+      <Review laptop={laptop} />
     </main>
+    <Footer laptop={laptop} />
     </>
   )
 }
