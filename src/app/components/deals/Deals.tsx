@@ -59,7 +59,7 @@ const Deals = ({ laptop }: Props) => {
             <div className={`dealsWrapper flex flex-col ${laptop && 'w-[500px] mx-auto'}`}>
                 {/* card */}
                 {deals.map((item, index) =>
-                <div key={item.id} className='border-t-[0.5px] border-[#00000055] dark:border-[#ffffff33] flex items-center bg-[#ccc0a8] dark:bg-[#393939]'>
+                <div key={item.id} className='border-t-[0.5px] border-[#00000055] dark:border-[#ffffff33] flex items-center bg-[#dcd0b8] dark:bg-[#393939]'>
                     <div className='dealImageWrapper w-1/2 p-5'>
                         <div className={`h-[120px] border-[0.5px] border-[#00000055] dark:border-[#ffffff55] overflow-hidden ${index % 2 === 0 ? 'rounded-tr-[50px] rounded-br-[50px]' : 'rounded-tl-[50px] rounded-bl-[50px]'}`}>
                             <Image
@@ -74,7 +74,7 @@ const Deals = ({ laptop }: Props) => {
                     </div>
                     <div className={'dealDetailsWrapper w-1/2 px-[20px]'}>
                         <div className={`${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                            <p className='opacity-80 dark:opacity-90 text-[#154ccb] dark:text-[#c18b55]'>{item.title}</p>
+                            <p className='opacity-80 dark:opacity-90 mainColor'>{item.title}</p>
                             <h6 className='opacity-70 dark:opacity-50'>{item.descrition}</h6>
                         </div>
                     </div>

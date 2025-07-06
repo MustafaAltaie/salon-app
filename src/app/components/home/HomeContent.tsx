@@ -49,7 +49,7 @@ const Home = ({ laptop }: Props) => {
             <h2 className='text-center p-2' style={{ fontFamily: '"Luxurious Script", cursive' }}>Women haircuts</h2>
             <div className={`flex flex-wrap ${laptop && 'w-[500px] mx-auto'}`}>
                 {womanList.map(item =>
-                <div key={item.id} className='w-[calc(100%/2)] h-[200px] border-1 border-[#f9f9f9] dark:border-[#222]'>
+                <div key={item.id} className='w-[calc(100%/2)] h-[200px] border-1 border-[#EEE8DC] dark:border-[#222]'>
                     <Image
                         className={item.classes}
                         src={`/images/${item.image}`}

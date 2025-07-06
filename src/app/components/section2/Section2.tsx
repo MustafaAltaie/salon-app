@@ -44,9 +44,9 @@ const Section2 = ({ laptop }: Props) => {
     return (
         <section className='text-center bg-[#EEE8DC]'>
             <div className='bg-[#252525] py-10 px-18'>
-                <h2 className='text-[#bba593]' style={{ fontFamily: '"Luxurious Script", cursive' }}>Ready for a fresh look?</h2>
+                <h2 className='mainColor' style={{ fontFamily: '"Luxurious Script", cursive' }}>Ready for a fresh look?</h2>
                 <h6 className={`text-[#bba593] mt-1 mb-3 ${laptop && 'px-70'}`}>Booking your next appointment has never been easier. Whether you're planning a quick trim, a fresh color, or a full day of pampering, our simple booking system lets you choose the perfect time, service, and stylist — all in just a few taps.</h6>
-                <h6 className='border-[0.5px] border-[#bba593] text-[#bba593] py-1 px-3 w-fit mx-auto'>Book now. Shine later</h6>
+                <h6 className='border-[0.5px] mainColor py-1 px-3 w-fit mx-auto'>Book now. Shine later</h6>
             </div>
             <div className={`bg-[#EEE8DC] py-10 ${laptop && 'w-[500px] mx-auto'}`}>
                 <h2 className='text-black' style={{ fontFamily: '"Luxurious Script", cursive' }}>Meet the artists</h2>
@@ -61,7 +61,7 @@ const Section2 = ({ laptop }: Props) => {
                             width={100}
                             height={100}
                         />
-                        <h6 className='text-[#244ae4]'>{worker.name}</h6>
+                        <h6 className='mainColor'>{worker.name}</h6>
                         <h6 className='text-black'>{worker.position}</h6>
                     </div>)}
                 </div>

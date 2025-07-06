@@ -15,6 +15,10 @@ body.dark, .dark header {
     color: #eee;
 }
 
+label {
+    user-select: none;
+}
+
 h1 {
     @apply text-4xl;
     @apply font-bold;

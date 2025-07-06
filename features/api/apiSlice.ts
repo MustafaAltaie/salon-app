@@ -6,13 +6,7 @@ export const api = createApi({
     baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
   }),
   tagTypes: [
-    'profile',
-    'educations',
-    'experiences',
-    'skills',
-    'social',
-    'documents',
-    'projects',
+    'login',
   ],
   endpoints: () => ({}),
 });
