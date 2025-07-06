@@ -44,8 +44,8 @@ const Review = ({ laptop }: Props) => {
     ]);
 
     return (
-        <section className='border-t-[0.5px] border-b-[0.5px]'>
-            <div className={`flex flex-wrap gap-[10px] p-7 ${laptop && 'w-[40%] mx-auto'}`}>
+        <section className='border-t-[0.5px] dark:border-b-[0.5px] border-[#00000055] dark:border-[#ffffff33]'>
+            <div className={`flex flex-wrap gap-[10px] p-10 ${laptop && 'w-[500px] mx-auto'}`}>
                 {/* review */}
                 {reviews.map(review =>
                 <div key={review.id} className='flex flex-col justify-between bg-[#00000018] p-3 dark:bg-[#ffffff11]' style={{ width: 'calc(100%/3 - 20px/3)' }}>

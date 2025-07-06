@@ -39,7 +39,7 @@ const Home = ({ laptop }: Props) => {
             <div className={`gradientBg overflow-hidden flex justify-center items-end ${laptop ? 'h-[450px]' : 'h-[600px]'}`}>
                 <Image
                     src='/images/empty1.png'
-                    className={`brightness-80 object-cover ${laptop ? 'object-center translate-y-6 w-[60%] h-[100%]' : 'w-[90%] h-[85%]'}`}
+                    className={`brightness-80 object-contain ${laptop ? 'object-center translate-y-6 w-[60%] h-[100%]' : 'w-[90%] h-[85%]'}`}
                     alt='Home image'
                     width={700}
                     height={700}
@@ -47,7 +47,7 @@ const Home = ({ laptop }: Props) => {
                 />
             </div>
             <h2 className='text-center p-2' style={{ fontFamily: '"Luxurious Script", cursive' }}>Women haircuts</h2>
-            <div className={`flex flex-wrap ${laptop && 'w-1/2 mx-auto'}`}>
+            <div className={`flex flex-wrap ${laptop && 'w-[500px] mx-auto'}`}>
                 {womanList.map(item =>
                 <div key={item.id} className='w-[calc(100%/2)] h-[200px] border-1 border-[#f9f9f9] dark:border-[#222]'>
                     <Image

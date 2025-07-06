@@ -48,7 +48,7 @@ const Section2 = ({ laptop }: Props) => {
                 <h6 className={`text-[#bba593] mt-1 mb-3 ${laptop && 'px-70'}`}>Booking your next appointment has never been easier. Whether you're planning a quick trim, a fresh color, or a full day of pampering, our simple booking system lets you choose the perfect time, service, and stylist — all in just a few taps.</h6>
                 <h6 className='border-[0.5px] border-[#bba593] text-[#bba593] py-1 px-3 w-fit mx-auto'>Book now. Shine later</h6>
             </div>
-            <div className={`bg-[#EEE8DC] py-10 ${laptop && 'w-[50%] mx-auto'}`}>
+            <div className={`bg-[#EEE8DC] py-10 ${laptop && 'w-[500px] mx-auto'}`}>
                 <h2 className='text-black' style={{ fontFamily: '"Luxurious Script", cursive' }}>Meet the artists</h2>
                 <h6 className='text-black'>Passionate about beauty. Experts in precision</h6>
                 <div className='flex flex-wrap gap-[10px] px-5'>

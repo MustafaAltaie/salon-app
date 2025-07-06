@@ -8,12 +8,12 @@ interface Props {
 const Footer = ({ laptop }: Props) => {
     return (
         <footer className='bg-[#222]'>
-            <div className={`${laptop && 'w-1/2 mx-auto'}`}>
+            <div className={`${laptop && 'w-[700px] mx-auto'}`}>
                 <div className='text-center p-5'>
-                    <p className='text-[#a70] mb-1'>Welcome to our Salin</p>
-                    <h6 className='text-white opacity-70'>Where self-care meets style. Our team of expert stylists and beauty professionals is here to help you feel your absolute best — from the moment you walk in, to long after you leave. Book your next appointment and experience beauty, redefined.</h6>
+                    <h4 className='text-[#a70] mb-1'>Welcome to our Salin</h4>
+                    <h6 className='text-white opacity-70 px-5'>Where self-care meets style. Our team of expert stylists and beauty professionals is here to help you feel your absolute best — from the moment you walk in, to long after you leave. Book your next appointment and experience beauty, redefined.</h6>
                 </div>
-                <div className='flex gap-5 px-5 mb-7'>
+                <div className='flex gap-5 px-5 mb-5'>
                     <div className={`${laptop ? 'w-[25%]' : 'w-[40%]'}`}>
                         <h5 className='text-[#a70] mb-1'>You can reach as directly</h5>
                         <div>
@@ -28,7 +28,7 @@ const Footer = ({ laptop }: Props) => {
                         </div>
                     </div>
                     <div className={`${laptop ? 'w-[50%]' : 'w-[20%]'}`}>
-                        <h5 className='text-[#a70] mb-1'>Follow us on social media</h5>
+                        <h5 className={`text-[#a70] mb-1 ${laptop && 'text-center'}`}>Follow us on social media</h5>
                         <div className='flex gap-2 justify-center'>
                             <a href="#">
                                 <i className="fa-brands fa-twitter text-[#a70]"></i>
@@ -54,7 +54,7 @@ const Footer = ({ laptop }: Props) => {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className='border-t-[0.5px] border-[#ffffff55] pt-3'>
                     <h6 className="text-white opacity-70 text-center pb-4">
                         &copy; {new Date().getFullYear()} Salon Name. All rights reserved.
                     </h6>

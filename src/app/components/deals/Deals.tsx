@@ -56,12 +56,12 @@ const Deals = ({ laptop }: Props) => {
 
     return (
         <section>
-            <div className={`dealsWrapper flex flex-col ${laptop && 'w-[40%] mx-auto'}`}>
+            <div className={`dealsWrapper flex flex-col ${laptop && 'w-[500px] mx-auto'}`}>
                 {/* card */}
                 {deals.map((item, index) =>
-                <div key={item.id} className='border-t-[0.5px] border-[#00000055] dark:border-[#ffffff77] flex items-center bg-[#ccc0a8] dark:bg-[#393939]'>
+                <div key={item.id} className='border-t-[0.5px] border-[#00000055] dark:border-[#ffffff33] flex items-center bg-[#ccc0a8] dark:bg-[#393939]'>
                     <div className='dealImageWrapper w-1/2 p-5'>
-                        <div className={`h-[120px] border-[0.5px] overflow-hidden ${index % 2 === 0 ? 'rounded-tr-[50px] rounded-br-[50px]' : 'rounded-tl-[50px] rounded-bl-[50px]'}`}>
+                        <div className={`h-[120px] border-[0.5px] border-[#00000055] dark:border-[#ffffff55] overflow-hidden ${index % 2 === 0 ? 'rounded-tr-[50px] rounded-br-[50px]' : 'rounded-tl-[50px] rounded-bl-[50px]'}`}>
                             <Image
                                 className='h-full w-full object-cover'
                                 src={item.image}
