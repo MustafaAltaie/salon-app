@@ -91,7 +91,7 @@ const Header = ({ laptop }: Props) => {
                         <div className='flex gap-2'>
                             <SunIcon className='w-4' onClick={() => setDark(false)} />
                             <div className='relative w-[32px] h-[20.5px] mainBg rounded-2xl dark:border-[0.5px]' onClick={() => setDark(!dark)}>
-                                <div className={`absolute transition-left duration-300 w-[20.5px] h-[20.5px] dark:h-[20px] border-1 dark:border-0 border-[#75f] bg-white rounded-full ${dark ? 'left-3' : 'left-0'}`}></div>
+                                <div className={`absolute transition-left duration-300 w-[20.5px] h-[20.5px] dark:h-[20px] border-1 dark:border-0 border-[#a70] bg-white rounded-full ${dark ? 'left-3' : 'left-0'}`}></div>
                             </div>
                             <MoonIcon className='w-4' onClick={() => setDark(true)} />
                         </div>
@@ -111,7 +111,7 @@ const Header = ({ laptop }: Props) => {
                     {navList.map(item =>
                     <li
                         key={item.id}
-                        className={`${!laptop && 'border-t-[0.5px] border-[#00000055] dark:border-[#ffffff55]'} ${laptop && 'rounded-xl'} ${laptop ? 'py-2 px-3' : 'p-6'} cursor-pointer dark:text-[#a783ed] hover:bg-[#73f] active:bg-[#73f] hover:text-white active:text-white ${pathname === item.target && 'bg-[#73f] text-white dark:text-white'}`}
+                        className={`${!laptop && 'border-t-[0.5px] border-[#00000055] dark:border-[#ffffff55]'} ${laptop && 'rounded-xl'} ${laptop ? 'py-2 px-3' : 'p-6'} cursor-pointer dark:text-[#a70] hover:bg-[#a70] active:bg-[#a70] hover:text-white active:text-white ${pathname === item.target && 'bg-[#a70] text-white dark:text-white'}`}
                         onClick={() => router.push(item.target)}
                     >{item.icon && <i className={`${item.icon} mr-2`}></i>}{item.title}</li>)}
                 </ul>

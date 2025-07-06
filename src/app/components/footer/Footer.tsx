@@ -10,7 +10,7 @@ const Footer = ({ laptop }: Props) => {
         <footer className='bg-[#222]'>
             <div className={`${laptop && 'w-[700px] mx-auto'}`}>
                 <div className='text-center p-5'>
-                    <h4 className='text-[#a70] mb-1'>Welcome to our Salin</h4>
+                    <h4 className='text-[#a70] mb-1'>Welcome to our Salon</h4>
                     <h6 className='text-white opacity-70 px-5'>Where self-care meets style. Our team of expert stylists and beauty professionals is here to help you feel your absolute best — from the moment you walk in, to long after you leave. Book your next appointment and experience beauty, redefined.</h6>
                 </div>
                 <div className='flex gap-5 px-5 mb-5'>

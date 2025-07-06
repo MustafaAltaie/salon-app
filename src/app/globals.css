@@ -36,19 +36,16 @@ h6 {
 }
 
 .mainColor {
-    color: #75f;
-}
-.dark .mainColor {
-    color: #a8f;
+    color: #a70;
 }
 .mainBg {
-    background: #85f;
+    background: #a70;
 }
 .gradientBg {
-    background-image: radial-gradient(circle at 40% 70%, #5c3591, transparent 100%);
+    background-image: radial-gradient(circle at 40% 50%, #aa7700aa, transparent 80%);
 }
 .dark .mainBg {
-    background: #73f;
+    background: #a70;
 }
 label, input, p, button {
     @apply text-[16px];
