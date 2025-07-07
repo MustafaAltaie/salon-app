@@ -86,7 +86,7 @@ const Header = ({ laptop }: Props) => {
             <div className={`${laptop ? 'p-2' : 'p-6'}`}>
                 <div className='flex items-center justify-between'>
                     <div className='cursor-pointer flex items-center gap-7'>
-                        <h5>Salon logo</h5>
+                        <h4>Salon <span className='mainColor'>logo</span></h4>
                         {/* dark mode toggle */}
                         <div className='flex gap-2'>
                             <SunIcon className='w-4' onClick={() => setDark(false)} />
