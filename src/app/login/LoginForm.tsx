@@ -11,7 +11,7 @@ const LoginForm = ({ setLogin, laptop }: Props) => {
     const [show, setShow] = useState(false);
 
     return (
-        <form className={`${laptop && 'absolute top-1/2 -translate-y-1/2'} border-[0.5px] border-[#00000077] dark:border-[#ffffff77] p-5 rounded-3xl flex flex-col gap-4 lg:gap-3`}>
+        <form className={`${laptop && 'absolute top-1/2 -translate-y-1/2 border-[0.5px] border-[#00000077] dark:border-[#ffffff77] p-5 rounded-3xl'} px-5 flex flex-col gap-4 lg:gap-3`}>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
                     <EnvelopeIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor`} />
@@ -28,7 +28,7 @@ const LoginForm = ({ setLogin, laptop }: Props) => {
                 <input type="password" id='mobileText' autoComplete='off' placeholder='Password' />
             </div>
             <div className='flex flex-col gap-3 mt-2'>
-                <button className='flex justify-center gap-1 mainBg text-white rounded-xl bg-[#e9e9e9] dark:bg-[#333] py-2'>Sign in<ArrowLongRightIcon className='w-5 lg:w-4' /></button>
+                <button className='flex justify-center items-end gap-1 mainBg text-white rounded-xl bg-[#e9e9e9] dark:bg-[#333] py-2'>Sign in<ArrowLongRightIcon className='w-5 lg:w-4' /></button>
                 <p className='text-lg'>Don't have an acount? <span className='mainColor cursor-pointer' onClick={() => setLogin(false)}>Sign up</span></p>
             </div>
             <p className='text-neutral-500'>New here? Create an account to book appointments, track your visits, and enjoy exclusive salon offers.</p>
