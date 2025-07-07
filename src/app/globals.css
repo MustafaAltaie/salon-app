@@ -4,6 +4,7 @@
 * {
     box-sizing: border-box;
     outline: none;
+    resize: none;
 }
 
 body, header {
@@ -39,14 +40,23 @@ h6 {
     @apply text-[12px];
 }
 
+.dark .mainColor {
+    @apply text-[#a70];
+}
 .mainColor {
-    color: #a70;
+    @apply text-[#805a00];
+}
+.mainColorFixed {
+    @apply text-[#a70];
 }
 .mainBg {
-    background: #a70;
+    @apply bg-[#a70];
+}
+.dark .mainBorder {
+    @apply border-[#a70];
 }
 .mainBorder {
-    @apply border-[#a70];
+    @apply border-[#00000077];
 }
 .gradientBg {
     background-image: radial-gradient(circle at 40% 50%, #aa7700aa, transparent 80%);

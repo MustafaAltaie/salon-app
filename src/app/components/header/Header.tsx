@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 import { useRouter, usePathname } from 'next/navigation';
 
+interface Props {
+    laptop: boolean | undefined
+}
+
 interface navProps {
     id: string
     title: string
@@ -49,10 +53,6 @@ const navList: navProps[] = [
     },
 ];
 
-interface Props {
-    laptop: boolean
-}
-
 const Header = ({ laptop }: Props) => {
     const [dark, setDark] = useState(true);
     const [nav, setNav] = useState(false);
@@ -91,7 +91,7 @@ const Header = ({ laptop }: Props) => {
                         <div className='flex gap-2'>
                             <SunIcon className='w-4' onClick={() => setDark(false)} />
                             <div className='relative w-[32px] h-[20.5px] mainBg rounded-2xl dark:border-[0.5px]' onClick={() => setDark(!dark)}>
-                                <div className={`absolute transition-left duration-300 w-[20.5px] h-[20.5px] dark:h-[20px] border-1 dark:border-0 mainBorder bg-white rounded-full ${dark ? 'left-3' : 'left-0'}`}></div>
+                                <div className={`absolute transition-left duration-300 w-[20.5px] h-[20.5px] dark:h-[20px] border-1 dark:border-0 border-[#a70] bg-white rounded-full ${dark ? 'left-3' : 'left-0'}`}></div>
                             </div>
                             <MoonIcon className='w-4' onClick={() => setDark(true)} />
                         </div>
@@ -111,7 +111,17 @@ const Header = ({ laptop }: Props) => {
                     {navList.map(item =>
                     <li
                         key={item.id}
-                        className={`${!laptop && 'border-t-[0.5px] border-[#00000055] dark:border-[#ffffff55]'} ${laptop && 'rounded-xl'} ${laptop ? 'py-2 px-3' : 'p-6'} cursor-pointer dark:text-[#a70] hover:bg-[#a70] active:bg-[#a70] hover:text-white active:text-white ${pathname === item.target && 'mainBg text-white dark:text-white'}`}
+                        className={
+                            `cursor-pointer
+                            ${!laptop && 'border-t-[0.5px] border-[#00000055] dark:border-[#ffffff55] dark:text-[#a70] p-6'}
+                            ${laptop && 'py-2 px-3 hover:text-[#a70] rounded-xl'}
+                            ${pathname === item.target && laptop
+                            ? 'border-[0.7px] border-[#a70] mainColor'
+                            : pathname === item.target && !laptop
+                            ? 'mainBg text-white dark:text-white'
+                            : pathname !== item.target && laptop
+                            && 'text-black dark:text-white'}`
+                        }
                         onClick={() => router.push(item.target)}
                     >{item.icon && <i className={`${item.icon} mr-2`}></i>}{item.title}</li>)}
                 </ul>
