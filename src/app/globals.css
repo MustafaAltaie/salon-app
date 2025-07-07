@@ -45,6 +45,9 @@ h6 {
 .mainBg {
     background: #a70;
 }
+.mainBorder {
+    @apply border-[#a70];
+}
 .gradientBg {
     background-image: radial-gradient(circle at 40% 50%, #aa7700aa, transparent 80%);
 }

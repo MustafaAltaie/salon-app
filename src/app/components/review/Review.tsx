@@ -65,7 +65,7 @@ const Review = ({ laptop }: Props) => {
                         />
                         </div>
                         <div className='flex flex-col gap-[2px]'>
-                            <h6 className='text-[#a70]' style={{ fontSize: '8px' }}>{review.name}</h6>
+                            <h6 className='mainColor' style={{ fontSize: '8px' }}>{review.name}</h6>
                             <div className='flex'><StarIcon className='w-[7px] text-[#c24]' /><StarIcon className='w-[7px] text-[#c24]' /><StarIcon className='w-[7px] text-[#c24]' /><StarIcon className='w-[7px] text-[#c24]' /><StarIcon className='w-[7px] text-[#c24]' /></div>
                         </div>
                     </div>
@@ -73,8 +73,8 @@ const Review = ({ laptop }: Props) => {
                     <p style={{ fontSize: '8px', opacity: '0.6', lineHeight: '10px', marginTop: '5px', marginBottom: '2px' }}>{review.comment}</p>
                     {/* footer */}
                     <div className='flex justify-between items-end'>
-                        <h6 className='text-[#a70]' style={{ fontSize: '8px' }}>Review date:</h6>
-                        <h6 className='text-[#a70]' style={{ fontSize: '7px' }}>{review.date}</h6>
+                        <h6 className='mainColor' style={{ fontSize: '8px' }}>Review date:</h6>
+                        <h6 className='mainColor' style={{ fontSize: '7px' }}>{review.date}</h6>
                     </div>
                 </div>)}
             </div>
