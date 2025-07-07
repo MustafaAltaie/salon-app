@@ -114,7 +114,7 @@ const Header = ({ laptop }: Props) => {
                         className={
                             `cursor-pointer
                             ${!laptop && 'border-t-[0.5px] border-[#00000055] dark:border-[#ffffff55] dark:text-[#a70] p-6'}
-                            ${laptop && 'py-2 px-3 hover:text-[#a70] rounded-xl'}
+                            ${laptop && 'py-2 px-3 hover:text-[#a70] rounded-xl dark:font-[200]'}
                             ${pathname === item.target && laptop
                             ? 'border-[0.7px] border-[#a70] mainColor'
                             : pathname === item.target && !laptop

@@ -46,7 +46,7 @@ const Home = ({ laptop }: Props) => {
                     loading='lazy'
                 />
             </div>
-            <h2 className='text-center p-2 mainColor border-t-[0.5px]' style={{ fontFamily: '"Luxurious Script", cursive' }}>Women haircuts</h2>
+            <h2 className='text-center p-2 mainColor' style={{ fontFamily: '"Luxurious Script", cursive' }}>Women haircuts</h2>
             <div className={`flex flex-wrap ${laptop && 'w-[500px] mx-auto'}`}>
                 {womanList.map(item =>
                 <div key={item.id} className='w-[calc(100%/2)] h-[200px] border-1 border-[#EEE8DC] dark:border-[#222]'>

@@ -33,7 +33,7 @@ const Footer = ({ laptop }: Props) => {
                     {!laptop && <OpeningHours />}
                 </div>
                 {laptop &&
-                <div className='mb-10'>
+                <div className='mb-10 px-30'>
                     <OpeningHours />
                 </div>}
                 <div className='border-t-[0.5px] border-[#ffffff55] pt-3'>
