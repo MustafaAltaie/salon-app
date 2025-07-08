@@ -78,3 +78,17 @@ input {
 button {
     cursor: pointer;
 }
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

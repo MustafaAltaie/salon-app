@@ -127,7 +127,7 @@ const Header = ({ laptop }: Props) => {
                 </ul>
             </nav>
         </header>
-        <div className={`${laptop ? 'h-[62px]' : 'h-[68px]'} mainBg`}></div>
+        <div className={`${laptop ? 'h-[62px]' : 'h-[76px]'} mainBg`}></div>
         </>
     )
 }

@@ -18,25 +18,25 @@ const Deals = ({ laptop }: Props) => {
     const [deals] = useState<DealProps[]>([
         {
             id: '1',
-            title: 'haircuts and washing',
+            title: 'Haircuts and washing',
             descrition: "Sit back, relax, and let us take care of the rest. From a refreshing wash to a perfectly tailored cut, every step is designed to leave you feeling confident and renewed.",
             image: '/images/deals/1.png',
         },
         {
             id: '2',
-            title: 'haircut + beard combo',
+            title: 'Haircut + beard combo',
             descrition: "Fresh cut, clean lines, and a beard that means business — our haircut and beard combo is designed to keep you looking sharp and feeling confident.",
             image: '/images/deals/2.png',
         },
         {
             id: '3',
-            title: 'haircut for men',
+            title: 'Haircut for men',
             descrition: "A great haircut does more than clean up your look — it boosts confidence and defines your personal style. Our mens haircut service is all about precision, and attention to detail.",
             image: '/images/deals/3.png',
         },
         {
             id: '4',
-            title: 'beard style cut',
+            title: 'Beard style cut',
             descrition: "Your beard deserves more than just a trim — it deserves style. Our beard styling service is tailored to shape, define, and enhance your natural features.",
             image: '/images/deals/4.png',
         },
@@ -48,7 +48,7 @@ const Deals = ({ laptop }: Props) => {
         },
         {
             id: '6',
-            title: 'hair blow-dry & styling',
+            title: 'Hair blow-dry & styling',
             descrition: "Sometimes all it takes is a good blowout to feel brand new. Our blow-dry and styling service is designed to smooth, shape, and bring your hair to life with volume.",
             image: '/images/deals/6.png',
         },

@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/postcss": "^4.1.11",
     "cloudinary": "^2.7.0",
+    "framer-motion": "^12.23.0",
     "mongoose": "^8.16.1",
     "next": "15.3.4",
     "react": "^19.0.0",
