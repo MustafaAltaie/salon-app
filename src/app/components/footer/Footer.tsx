@@ -9,7 +9,7 @@ interface Props {
 
 const Footer = ({ laptop }: Props) => {
     return (
-        <footer className='bg-[#222] overflow-x-hidden'>
+        <footer className='bg-[#222] overflow-x-hidden border-t-[0.5px] border-[#ffffff55]'>
             <div className={`${laptop ? 'w-[700px] mx-auto' : 'flex flex-col'}`}>
                 <div className='text-center p-5'>
                     <h4 className='mainColorFixed mb-1 font-[200]'>Welcome to our Salon</h4>
@@ -36,11 +36,11 @@ const Footer = ({ laptop }: Props) => {
                 <div className='mb-10 px-30'>
                     <OpeningHours />
                 </div>}
-                <div className='border-t-[0.5px] border-[#ffffff55] pt-3'>
-                    <h6 className="text-white opacity-70 text-center pb-4 font-[200]">
-                        &copy; {new Date().getFullYear()} Salon Name. All rights reserved.
-                    </h6>
-                </div>
+            </div>
+            <div className='border-t-[0.5px] border-[#ffffff55] pt-3'>
+                <h6 className="text-white opacity-70 text-center pb-4 font-[200]">
+                    &copy; {new Date().getFullYear()} Salon Name. All rights reserved.
+                </h6>
             </div>
         </footer>
     )

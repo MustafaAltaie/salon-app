@@ -5,6 +5,7 @@ import { UserProps } from '../../../types/User';
 import './login.css';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import Footer from '../components/footer/Footer';
 
 const Login = () => {
     const [login, setLogin] = useState(false);
@@ -34,13 +35,14 @@ const Login = () => {
     return (
         <>
         <Header laptop={laptop} />
-        <div className='loginWrapper flex flex-col justify-center items-center p-5 gap-10'>
+        <section className='loginWrapper flex flex-col justify-center items-center p-5 gap-10'>
             {!laptop && <h1 className='mt-5 mainColor'>{login ? 'Sign in' : 'Sign up'}</h1>}
             <div className='lg:w-[40%] w-full'>
                 {login && <LoginForm setLogin={setLogin} laptop={laptop} />}
                 {!login && <SignupForm setLogin={setLogin} laptop={laptop} />}
             </div>
-        </div>
+        </section>
+        <Footer laptop={laptop} />
         </>
     )
 }

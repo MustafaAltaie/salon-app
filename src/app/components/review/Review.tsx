@@ -46,7 +46,7 @@ const Review = ({ laptop }: Props) => {
     const [review, setReview] = useState(false);
 
     return (
-        <section className='border-t-[0.5px] dark:border-b-[0.5px] border-[#00000055] dark:border-[#ffffff33]'>
+        <section className='border-t-[0.5px] border-[#00000055] dark:border-[#ffffff33]'>
             <h6 className={`pt-5 px-10 ${laptop && 'text-center'}`}>The latest three reviews we got. <span className='mainColor cursor-pointer' onClick={() => setReview(true)}>Please leave us a review</span> to help us grow.</h6>
             <div className={`flex flex-wrap gap-[10px] px-10 pt-5 pb-7 ${laptop && 'w-[500px] mx-auto'}`}>
                 {/* review */}
