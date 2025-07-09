@@ -29,7 +29,7 @@ const Contact = () => {
             <div className={`${laptop && 'w-[500px] mx-auto'}`}>
                 <div className='text-center'>
                     <h1 className='text-[#a70]'>Contact us</h1>
-                    <p className='mt-3 mb-5 dark:opacity-75 dark:font-[200]'>Have questions about our services, booking, or your upcoming appointment? We’re here to help! Whether you're looking for style advice, need to reschedule, or just want to say hello — feel free to reach out.</p>
+                    <p className='mt-3 mb-5 dark:opacity-75 dark:font-[200]'>Have questions about our services, booking, or your upcoming appointment? We are here to help! Whether you are looking for style advice, need to reschedule, or just want to say hello — feel free to reach out.</p>
                 </div>
                 <form>
                     <div className='flex flex-col gap-2'>

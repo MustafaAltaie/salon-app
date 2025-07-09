@@ -18,7 +18,7 @@ const ReviewForm = ({ review, setReview }: Props) => {
             setMouted(true);
             formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    }, [review, setMouted]);
+    }, [review, mouted, setMouted]);
 
     return (
         <form ref={formRef} className={`transition-all duration-700 px-10 overflow-y-hidden lg:w-[500px] lg:mx-auto ${review ? 'max-h-70 mb-10' : 'max-h-0'}`}>

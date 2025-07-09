@@ -103,12 +103,13 @@ const About = () => {
     }, []);
 
     useEffect(() => {
+        if (heroImages.length === 0) return;
         const interval = setInterval(() => {
            setCount(prev => (prev + 1) % heroImages.length); 
         }, 5000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [heroImages.length]);
 
     if (!isMounted) return null;
 
@@ -164,7 +165,7 @@ const About = () => {
                 {/* about text */}
                 <div className={`px-10 pt-3 pb-5 border-t-[0.5px] border-b-[0.5px] ${laptop ? 'w-[900px] mx-auto' : ''}`}>
                     <h3 className='mainColor'>About us</h3>
-                    <p className={!laptop ? 'font-[200]' : ''}>At our salon, beauty meets expertise. We're a team of skilled professionals passionate about helping you look and feel your best. From precision haircuts and beard grooming to rejuvenating skincare and relaxing treatments, we focus on delivering personalized service in a clean, welcoming environment. With attention to detail, high-quality products, and modern techniques, we make every visit an experience — not just an appointment.</p>
+                    <p className={!laptop ? 'font-[200]' : ''}>At our salon, beauty meets expertise. We are a team of skilled professionals passionate about helping you look and feel your best. From precision haircuts and beard grooming to rejuvenating skincare and relaxing treatments, we focus on delivering personalized service in a clean, welcoming environment. With attention to detail, high-quality products, and modern techniques, we make every visit an experience — not just an appointment.</p>
                 </div>
                 {/* staff */}
                 <div className={laptop ? 'w-[900px] mx-auto pt-5' : ''}>

@@ -28,7 +28,7 @@ const LoginForm = ({ setLogin }: Props) => {
             </div>
             <div className='flex flex-col gap-3 mt-2'>
                 <button className='flex justify-center items-end gap-1 mainBg text-white rounded-xl bg-[#e9e9e9] dark:bg-[#333] py-2'>Sign in<ArrowLongRightIcon className='w-5 lg:w-4' /></button>
-                <p className='text-lg'>Don't have an acount? <span className='mainColor cursor-pointer' onClick={() => setLogin(false)}>Sign up</span></p>
+                <p className='text-lg'>Do not have an acount? <span className='mainColor cursor-pointer' onClick={() => setLogin(false)}>Sign up</span></p>
             </div>
             <p className='text-neutral-500'>New here? Create an account to book appointments, track your visits, and enjoy exclusive salon offers.</p>
         </form>
