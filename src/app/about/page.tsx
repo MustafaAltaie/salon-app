@@ -5,14 +5,9 @@ import Footer from '../components/footer/Footer';
 import Staf from '../reusableComponents/Staf';
 import Reviews from '../reusableComponents/Reviews';
 import { ReviewProps } from '../../../types/Review';
-import { motion } from 'framer-motion';
-
-interface AboutList {
-    id: string
-    icon: string
-    title: string
-    text: string
-}
+import { AboutList } from '../../../types/AboutList';
+import Mission from './Mission';
+import Image from 'next/image';
 
 const About = () => {
     const [laptop, setLaptop] = useState(false);
@@ -93,6 +88,8 @@ const About = () => {
             icon: 'fa-solid fa-crosshairs'
         },
     ]);
+    const [heroImages] = useState<string[]>(['/images/1.jpg', '/images/2.jpg', '/images/4.jpg', '/images/5.jpg']);
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -101,9 +98,16 @@ const About = () => {
             setLaptop(window.innerWidth >= 1024);
         }
         checkWidth();
-
         window.addEventListener('resize', checkWidth);
         return () => window.removeEventListener('resize', checkWidth);
+    }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+           setCount(prev => (prev + 1) % heroImages.length); 
+        }, 5000);
+
+        return () => clearInterval(interval);
     }, []);
 
     if (!isMounted) return null;
@@ -113,42 +117,75 @@ const About = () => {
         <Header laptop={laptop} />
         <section className='overflow-x-hidden'>
             <div>
-                <div className={`p-5 ${laptop ? 'w-[900px] mx-auto' : ''}`}>
-                    <Staf laptop={laptop} />
-                </div>
-                {/* review */}
-                <div className={`flex flex-wrap gap-[10px] px-10 pt-5 pb-7 ${laptop && 'w-[500px] mx-auto'}`}>
-                    {/* review */}
-                    {reviews.map(review =>
-                    <Reviews key={review.id} review={review} />
-                    )}
-                </div>
-                {/* all services */}
-                <div className={laptop ? 'w-[500px] mx-auto' : ''}>
-                    <p className='ml-15 mainColor'>Our Mission</p>
-                    <div className={`px-15 overflow-y-scroll scrollbar-hide ${laptop ? 'max-h-60' : 'max-h-70'}`}>
-                        {aboutList.map(item =>
-                        <div key={item.id} className='flex items-center border-l-[0.5px] border-[#a70] py-5'>
-                            <motion.div
-                                className='mainColor bg-[#EEE8DC] dark:bg-[#222] border-[0.7px] rounded-[35%] max-w-[30px] min-w-[30px] max-h-[30px] min-h-[30px] centered -translate-x-[50%]'
-                                initial={{ x: -50 }}
-                                whileInView={{ x: 0 }}
-                                transition={{ duration: 0.5 }}
-                                viewport={{ once: laptop ? true : false, amount: 0 }}
-                            >
-                                <i className={item.icon}></i>
-                            </motion.div>
-                            <motion.div
-                                initial={{ x: 50 }}
-                                whileInView={{ x: 0 }}
-                                transition={{ duration: 0.5 }}
-                                viewport={{ once: laptop ? true : false, amount: 0.3 }}
-                            >
-                                <p className='mainColor'>{item.title}</p>
-                                <h6 className='opacity-70'>{item.text}</h6>
-                            </motion.div>
+                {/* hero images slideshow */}
+                <div className={`relative ${laptop ? 'w-[500px] mx-auto' : ''}`}>
+                    <div className={`relative ${laptop ? 'h-[400px]' : 'h-[500px]'}`}>
+                        {heroImages.map((image, index) =>
+                        <div
+                            key={(index)}
+                            className='w-full h-full absolute top-0 left-0 flex transition-opacity duration-2000'
+                            style={{ opacity: index === count ? 1 : 0 }}
+                        >
+                            <Image
+                                className='w-full h-full object-cover object-center pointer-events-none'
+                                src={image}
+                                alt='Image'
+                                width={500}
+                                height={500}
+                                loading='lazy'
+                            />
                         </div>)}
                     </div>
+                    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center'>
+                        <h1 className='font-bold mb-2 text-white'>Our Work Speaks for Itself</h1>
+                        <p className='text-[#b82]'>We take pride in every cut, style, and treatment delivering personalized results that leave our clients confident, fresh, and satisfied.</p>
+                    </div>
+                </div>
+                {/* hero images list */}
+                <div className={`flex flex-wrap gap-[10px] ${laptop ? 'w-[500px] mx-auto py-[10px]' : 'p-[10px] border-b-[0.5px]'}`}>
+                    {heroImages.map((image, index) =>
+                    <div
+                        key={index}
+                        className='h-[80px] cursor-pointer'
+                        style={{ width: 'calc(100%/4 - 30px/4)', border: index === count ? 'solid 5px #08a' : 'solid 5px #a70' }}
+                        onClick={() => setCount(index)}
+                    >
+                        <Image
+                            className='w-full h-full object-cover pointer-events-none'
+                            src={image}
+                            alt='image'
+                            width={200}
+                            height={200}
+                            loading='lazy'
+                        />
+                    </div>
+                    )}
+                </div>
+                {/* about text */}
+                <div className={`px-10 pt-3 pb-5 border-t-[0.5px] border-b-[0.5px] ${laptop ? 'w-[900px] mx-auto' : ''}`}>
+                    <h3 className='text-[#a70]'>About us</h3>
+                    <p className={!laptop ? 'font-[200]' : ''}>At our salon, beauty meets expertise. We're a team of skilled professionals passionate about helping you look and feel your best. From precision haircuts and beard grooming to rejuvenating skincare and relaxing treatments, we focus on delivering personalized service in a clean, welcoming environment. With attention to detail, high-quality products, and modern techniques, we make every visit an experience — not just an appointment.</p>
+                </div>
+                {/* staff */}
+                <div className={laptop ? 'w-[900px] mx-auto pt-5' : ''}>
+                    <h3 className={`text-[#a70] ml-10 ${!laptop ? 'mt-4 mb-2' : ''}`}>Meet the team</h3>
+                    <div className={`${laptop ? 'p-5' : 'p-5 pt-0'}`}>
+                        <Staf laptop={laptop} />
+                    </div>
+                </div>
+                {/* review */}
+                <div className={`px-10 pb-7 pt-3 mb-5 ${laptop ? 'w-[500px] mx-auto' : 'border-t-[0.5px] border-b-[0.5px]'}`}>
+                    <p className='text-[#a70] mb-1'>Review</p>
+                    <div className='flex flex-wrap gap-[10px]'>
+                        {reviews.map(review =>
+                            <Reviews key={review.id} review={review} />
+                        )}
+                    </div>
+                </div>
+                {/* our mission */}
+                <div className={laptop ? 'w-[500px] mx-auto' : ''}>
+                    <p className='ml-15 text-[#a70]'>Our Mission</p>
+                    <Mission aboutList={aboutList} laptop={laptop} />
                 </div>
             </div>
         </section>

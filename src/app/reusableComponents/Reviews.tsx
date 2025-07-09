@@ -14,7 +14,7 @@ const Reviews = ({ review }: Props) => {
             <div className='flex items-center gap-2'>
                 <div>
                     <Image
-                    className='rounded-full'
+                    className='rounded-full pointer-events-none'
                     src={review.image}
                     alt='Image'
                     width={20}

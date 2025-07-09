@@ -65,7 +65,7 @@ const Staf = ({ laptop }: Props) => {
             // with roll
             <div key={worker.id} className='flex gap-2 items-center' style={{ width: laptop ? 'calc(100%/4 - 30px/4)' : 'calc(100%/2 - 10px/2)' }}>
                 <Image
-                    className='w-[70px] h-[70px] object-cover'
+                    className='w-[70px] h-[70px] object-cover pointer-events-none'
                     style={{ clipPath: 'polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%)' }}
                     src={worker.image}
                     alt='Staf'

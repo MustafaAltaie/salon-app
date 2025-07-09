@@ -106,7 +106,7 @@ const Header = ({ laptop }: Props) => {
                 </div>
             </div>
             {/* nav */}
-            <nav className={`overflow-y-hidden transition-all duration-700 ${nav ? 'max-h-110' : 'max-h-0'}`}>
+            <nav className={`overflow-y-hidden transition-all duration-700 ${nav ? 'max-h-130' : 'max-h-0'}`}>
                 <ul className={`gap-0 flex-col text-center ${laptop && 'flex gap-3 flex-row'}`}>
                     {navList.map(item =>
                     <li
@@ -114,7 +114,7 @@ const Header = ({ laptop }: Props) => {
                         className={
                             `cursor-pointer
                             ${!laptop && 'border-t-[0.5px] border-[#00000055] dark:border-[#ffffff55] dark:text-[#a70] p-6'}
-                            ${laptop && 'py-2 px-3 hover:text-[#a70] rounded-xl dark:font-[200]'}
+                            ${laptop && 'py-2 px-3 hover:text-[#a70] rounded-xl font-[200]'}
                             ${pathname === item.target && laptop
                             ? 'border-[0.7px] border-[#a70] mainColor'
                             : pathname === item.target && !laptop
