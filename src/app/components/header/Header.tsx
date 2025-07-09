@@ -36,20 +36,20 @@ const navList: navProps[] = [
     {
         id: '2',
         title: 'Price list',
-        icon: '',
+        icon: 'fa-solid fa-sack-dollar',
         target: '/prices',
     },
     {
         id: '4',
         title: 'About us',
-        icon: '',
+        icon: 'fa-solid fa-circle-question',
         target: '/about',
     },
     {
         id: '5',
-        title: 'Special deals',
-        icon: '',
-        target: '/deals',
+        title: 'Book time',
+        icon: 'fa-solid fa-clock',
+        target: '/booking',
     },
 ];
 
@@ -86,12 +86,12 @@ const Header = ({ laptop }: Props) => {
             <div className={`${laptop ? 'p-2' : 'p-6'}`}>
                 <div className='flex items-center justify-between'>
                     <div className='cursor-pointer flex items-center gap-7'>
-                        <h4>Salon <span className='mainColor'>logo</span></h4>
+                        <h4 className='font-[200]'>Salon <span className='mainColor'>logo</span></h4>
                         {/* dark mode toggle */}
                         <div className='flex gap-2'>
                             <SunIcon className='w-4' onClick={() => setDark(false)} />
                             <div className='relative w-[32px] h-[20.5px] mainBg rounded-2xl dark:border-[0.5px]' onClick={() => setDark(!dark)}>
-                                <div className={`absolute transition-left duration-300 w-[20.5px] h-[20.5px] dark:h-[20px] border-1 dark:border-0 border-[#a70] bg-white rounded-full ${dark ? 'left-3' : 'left-0'}`}></div>
+                                <div className={`absolute transition-left duration-300 w-[20.5px] h-[20.5px] dark:h-[20px] border-1 dark:border-0 mainColor bg-white rounded-full ${dark ? 'left-3' : 'left-0'}`}></div>
                             </div>
                             <MoonIcon className='w-4' onClick={() => setDark(true)} />
                         </div>
@@ -113,10 +113,10 @@ const Header = ({ laptop }: Props) => {
                         key={item.id}
                         className={
                             `cursor-pointer
-                            ${!laptop && 'border-t-[0.5px] border-[#00000055] dark:border-[#ffffff55] dark:text-[#a70] p-6'}
-                            ${laptop && 'py-2 px-3 hover:text-[#a70] rounded-xl font-[200]'}
+                            ${!laptop && 'border-t-[0.5px] border-[#00000055] dark:border-[#ffffff55] mainColor p-6'}
+                            ${laptop && 'py-2 px-3 hover:text-[#a70] rounded-xl dark:font-[200]'}
                             ${pathname === item.target && laptop
-                            ? 'border-[0.7px] border-[#a70] mainColor'
+                            ? 'border-[0.7px] mainColor'
                             : pathname === item.target && !laptop
                             ? 'mainBg text-white dark:text-white'
                             : pathname !== item.target && laptop

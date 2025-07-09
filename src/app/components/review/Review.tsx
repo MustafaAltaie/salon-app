@@ -3,11 +3,7 @@ import ReviewForm from './ReviewForm';
 import { ReviewProps } from '../../../../types/Review';
 import Reviews from '@/app/reusableComponents/Reviews';
 
-interface Props {
-    laptop: boolean
-}
-
-const Review = ({ laptop }: Props) => {
+const Review = () => {
     const [reviews] = useState<ReviewProps[]>([
         {
             id: '1',
@@ -38,14 +34,14 @@ const Review = ({ laptop }: Props) => {
 
     return (
         <section className='border-t-[0.5px] border-[#00000055] dark:border-[#ffffff33]'>
-            <h6 className={`pt-5 px-10 ${laptop && 'text-center'}`}>The latest three reviews we got. <span className='mainColor cursor-pointer' onClick={() => setReview(true)}>Please leave us a review</span> to help us grow.</h6>
-            <div className={`flex flex-wrap gap-[10px] px-10 pt-5 pb-7 ${laptop && 'w-[500px] mx-auto'}`}>
+            <h6 className='pt-5 px-10 lg:text-center'>The latest three reviews we got. <span className='mainColor cursor-pointer' onClick={() => setReview(true)}>Please leave us a review</span> to help us grow.</h6>
+            <div className='flex flex-wrap gap-[10px] px-10 pt-5 pb-7 lg:w-[500px] lg:mx-auto'>
                 {/* review */}
                 {reviews.map(review =>
                 <Reviews key={review.id} review={review} />
                 )}
             </div>
-            <ReviewForm laptop={laptop} review={review} setReview={setReview} />
+            <ReviewForm review={review} setReview={setReview} />
         </section>
     )
 }

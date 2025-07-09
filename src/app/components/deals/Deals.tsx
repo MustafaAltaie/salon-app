@@ -3,10 +3,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import './Deals.css';
 
-interface Props {
-    laptop: boolean
-}
-
 interface DealProps {
     id: string
     title: string
@@ -14,7 +10,7 @@ interface DealProps {
     image: string
 }
 
-const Deals = ({ laptop }: Props) => {
+const Deals = () => {
     const [deals] = useState<DealProps[]>([
         {
             id: '1',
@@ -56,7 +52,7 @@ const Deals = ({ laptop }: Props) => {
 
     return (
         <section>
-            <div className={`dealsWrapper flex flex-col ${laptop && 'w-[500px] mx-auto'}`}>
+            <div className='dealsWrapper flex flex-col lg:w-[500px] lg:mx-auto'>
                 {/* card */}
                 {deals.map((item, index) =>
                 <div key={item.id} className='border-t-[0.5px] border-[#00000055] dark:border-[#ffffff33] flex items-center bg-[#dcd0b8] dark:bg-[#333]'>
@@ -74,7 +70,7 @@ const Deals = ({ laptop }: Props) => {
                     </div>
                     <div className={'dealDetailsWrapper w-1/2 px-[20px]'}>
                         <div className={`${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                            <h5 className={`mainColor ${laptop && 'font-[200]'}`}>{item.title}</h5>
+                            <h5 className='mainColor lg:font-[200]'>{item.title}</h5>
                             <h6 className='opacity-70 dark:font-[200]'>{item.descrition}</h6>
                         </div>
                     </div>

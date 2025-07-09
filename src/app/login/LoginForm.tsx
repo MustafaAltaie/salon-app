@@ -4,25 +4,24 @@ import { EnvelopeIcon, ArrowLongRightIcon, EyeIcon, EyeSlashIcon } from '@heroic
 
 interface Props {
     setLogin: React.Dispatch<React.SetStateAction<boolean>>
-    laptop: boolean
 }
 
-const LoginForm = ({ setLogin, laptop }: Props) => {
+const LoginForm = ({ setLogin }: Props) => {
     const [show, setShow] = useState(false);
 
     return (
-        <form className={`${laptop && 'absolute top-1/2 -translate-y-1/2 border-[0.5px] border-[#00000077] dark:border-[#ffffff77] p-5 rounded-3xl'} px-5 flex flex-col gap-4 lg:gap-3`}>
+        <form className='lg:top-1/2 lg:gap-3 lg:border-[0.5px] lg:border-[#00000077] lg:dark:border-[#ffffff77] lg:rounded-3xl p-5 px-5 flex flex-col gap-4'>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
-                    <EnvelopeIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor`} />
+                    <EnvelopeIcon className='lg:w-4 w-5 mainColor' />
                     <label className='mainColor' htmlFor="emailText">Email address</label>
                 </div>
                 <input type="email" id='emailText' autoComplete='off' placeholder='e.g. John@gmail.com' />
             </div>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
-                    {!show && <EyeSlashIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor cursor-pointer`} onClick={() => setShow(true)} />}
-                    {show && <EyeIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor cursor-pointer`} onClick={() => setShow(false)} />}
+                    {!show && <EyeSlashIcon className='lg:w-4 w-5 mainColor cursor-pointer' onClick={() => setShow(true)} />}
+                    {show && <EyeIcon className='lg:w-4 w-5 mainColor cursor-pointer' onClick={() => setShow(false)} />}
                     <label className='mainColor' htmlFor="mobileText">Password</label>
                 </div>
                 <input type="password" id='mobileText' autoComplete='off' placeholder='Password' />

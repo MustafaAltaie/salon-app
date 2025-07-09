@@ -1,25 +1,27 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 interface Props {
     review: boolean
     setReview: React.Dispatch<React.SetStateAction<boolean>>
-    laptop: boolean
 }
 
-const ReviewForm = ({ review, setReview, laptop }: Props) => {
+const ReviewForm = ({ review, setReview }: Props) => {
     const formRef = useRef<HTMLFormElement | null>(null);
+    const [mouted, setMouted] = useState(false);
 
     useEffect(() => {
         if (!formRef.current) return;
+        if (mouted) return;
         if (review) {
-            formRef.current.scrollIntoView({ block: 'start' });
+            setMouted(true);
+            formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    }, [review]);
+    }, [review, setMouted]);
 
     return (
-        <form ref={formRef} className={`transition-all duration-700 px-10 overflow-y-hidden ${laptop && 'w-[500px] mx-auto'} ${review ? 'max-h-70 mb-10' : 'max-h-0'}`}>
+        <form ref={formRef} className={`transition-all duration-700 px-10 overflow-y-hidden lg:w-[500px] lg:mx-auto ${review ? 'max-h-70 mb-10' : 'max-h-0'}`}>
             <div className='flex flex-col gap-2'>
                 <div className='flex flex-col'>
                     <div className='flex justify-between items-start'>

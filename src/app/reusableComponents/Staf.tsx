@@ -59,7 +59,7 @@ const Staf = ({ laptop }: Props) => {
                     width={100}
                     height={100}
                 />
-                <h6 className='text-[#a70]'>{worker.name}</h6>
+                <h6 className='mainColor'>{worker.name}</h6>
                 <h6 className='text-black'>{worker.position}</h6>
             </div> :
             // with roll

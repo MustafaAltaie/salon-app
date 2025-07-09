@@ -44,7 +44,7 @@ h6 {
     @apply text-[#a70];
 }
 .mainColor {
-    @apply text-[#805a00];
+    @apply text-[#a70];
 }
 .mainColorFixed {
     @apply text-[#a70];

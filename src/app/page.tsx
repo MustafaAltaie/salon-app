@@ -29,10 +29,10 @@ const Home = () => {
     <>
     <Header laptop={laptop} />
     <main>
-      <HomeContent laptop={laptop} />
-      <Section2 laptop={laptop} />
-      <Deals laptop={laptop} />
-      <Review laptop={laptop} />
+      <HomeContent />
+      <Section2 />
+      <Deals />
+      <Review />
     </main>
     <Footer laptop={laptop} />
     </>

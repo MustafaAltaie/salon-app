@@ -163,19 +163,19 @@ const About = () => {
                 </div>
                 {/* about text */}
                 <div className={`px-10 pt-3 pb-5 border-t-[0.5px] border-b-[0.5px] ${laptop ? 'w-[900px] mx-auto' : ''}`}>
-                    <h3 className='text-[#a70]'>About us</h3>
+                    <h3 className='mainColor'>About us</h3>
                     <p className={!laptop ? 'font-[200]' : ''}>At our salon, beauty meets expertise. We're a team of skilled professionals passionate about helping you look and feel your best. From precision haircuts and beard grooming to rejuvenating skincare and relaxing treatments, we focus on delivering personalized service in a clean, welcoming environment. With attention to detail, high-quality products, and modern techniques, we make every visit an experience — not just an appointment.</p>
                 </div>
                 {/* staff */}
                 <div className={laptop ? 'w-[900px] mx-auto pt-5' : ''}>
-                    <h3 className={`text-[#a70] ml-10 ${!laptop ? 'mt-4 mb-2' : ''}`}>Meet the team</h3>
+                    <h3 className={`mainColor ml-10 ${!laptop ? 'mt-4 mb-2' : ''}`}>Meet the team</h3>
                     <div className={`${laptop ? 'p-5' : 'p-5 pt-0'}`}>
                         <Staf laptop={laptop} />
                     </div>
                 </div>
                 {/* review */}
                 <div className={`px-10 pb-7 pt-3 mb-5 ${laptop ? 'w-[500px] mx-auto' : 'border-t-[0.5px] border-b-[0.5px]'}`}>
-                    <p className='text-[#a70] mb-1'>Review</p>
+                    <p className='mainColor mb-1'>Review</p>
                     <div className='flex flex-wrap gap-[10px]'>
                         {reviews.map(review =>
                             <Reviews key={review.id} review={review} />
@@ -184,7 +184,7 @@ const About = () => {
                 </div>
                 {/* our mission */}
                 <div className={laptop ? 'w-[500px] mx-auto' : ''}>
-                    <p className='ml-15 text-[#a70]'>Our Mission</p>
+                    <p className='ml-15 mainColor'>Our Mission</p>
                     <Mission aboutList={aboutList} laptop={laptop} />
                 </div>
             </div>

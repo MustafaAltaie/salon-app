@@ -4,39 +4,38 @@ import { UserIcon, EnvelopeIcon, PhoneIcon, ArrowLongRightIcon, EyeIcon, EyeSlas
 
 interface Props {
     setLogin: React.Dispatch<React.SetStateAction<boolean>>
-    laptop: boolean
 }
 
-const SignupForm = ({ setLogin, laptop }: Props) => {
+const SignupForm = ({ setLogin }: Props) => {
     const [show, setShow] = useState(false);
 
     return (
-        <form className={`lg:min-w-[40%] ${laptop && 'border-[0.5px] border-[#00000077] dark:border-[#ffffff77] py-3'} px-5 rounded-3xl flex flex-col gap-3 lg:gap-3`}>
+        <form className='lg:min-w-[40%] lg:border-[0.5px] lg:border-[#00000077] lg:dark:border-[#ffffff77] lg:py-3 px-5 rounded-3xl flex flex-col gap-3 lg:gap-3'>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
-                    <UserIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor`} />
+                    <UserIcon className='lg:w-4 w-5 mainColor' />
                     <label className='mainColor' htmlFor="nameText">Username</label>
                 </div>
                 <input type="text" id='nameText' autoComplete='name' placeholder='e.g. John Anderson' />
             </div>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
-                    <EnvelopeIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor`} />
+                    <EnvelopeIcon className='lg:w-4 w-5 mainColor' />
                     <label className='mainColor' htmlFor="emailText">Email address</label>
                 </div>
                 <input type="email" id='emailText' autoComplete='email' placeholder='e.g. John@gmail.com' />
             </div>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
-                    <PhoneIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor`} />
+                    <PhoneIcon className='lg:w-4 w-5 mainColor' />
                     <label className='mainColor' htmlFor="mobileText">Mobile</label>
                 </div>
                 <input type="tel" id='mobileText' autoComplete='tel' placeholder='e.g. 0712345678' />
             </div>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
-                    {!show && <EyeSlashIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor cursor-pointer`} onClick={() => setShow(true)} />}
-                    {show && <EyeIcon className={`${laptop ? 'w-4' : 'w-5'} mainColor cursor-pointer`} onClick={() => setShow(false)} />}
+                    {!show && <EyeSlashIcon className='lg:w-4 w-5 mainColor cursor-pointer' onClick={() => setShow(true)} />}
+                    {show && <EyeIcon className='lg:w-4 w-5 mainColor cursor-pointer' onClick={() => setShow(false)} />}
                     <label className='mainColor' htmlFor="passwordText">Password</label>
                 </div>
                 <input type="password" id='passwordText' autoComplete='off' placeholder='Password' />
@@ -47,7 +46,7 @@ const SignupForm = ({ setLogin, laptop }: Props) => {
                 </div>
                 <input type="password" id='confirmText' autoComplete='off' placeholder='Confirm password' />
             </div>
-            <div className='flex items-center justify-between'>
+            <div className='flex justify-between'>
                 <p className='text-lg'>Have an acount? <span className='mainColor cursor-pointer' onClick={() => setLogin(true)}>Sign in</span></p>
                 <button className='flex gap-1 mainBg text-white items-end rounded-xl bg-[#e9e9e9] dark:bg-[#333] px-7 py-2'>Sign up<ArrowLongRightIcon className='w-5 lg:w-4' /></button>
             </div>
