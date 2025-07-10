@@ -10,11 +10,15 @@ interface Props {
 const TimePick = ({ timeSlots, setThisDay, thisDay, setStep }: Props) => {
     return (
         <div>
+            <div>
+                <h3 className='mainColor mb-3'>Choose a time</h3>
+                <p className='opacity-75 mb-5'>Please choose the time you would like to visit us. Just click on the time that suits you.</p>
+            </div>
             <div className='flex flex-wrap pb-5'>
                 {timeSlots.map(nm =>
                     <button
                         key={nm}
-                        className={`w-[calc(100%/5)] h-15 border-[0.5px] border-[#aa770077] ${nm === thisDay ? 'bg-[#a70]' : ''}`}
+                        className={`w-[calc(100%/5)] touch-manipulation h-15 border-[0.5px] border-[#aa770055] ${nm === thisDay ? 'bg-[#a70] text-white' : ''}`}
                         onClick={() => setThisDay(thisDay === nm ? '' : nm)}
                     >{nm}</button>
                 )}
