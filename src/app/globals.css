@@ -62,7 +62,7 @@ h6 {
     background-image: radial-gradient(circle at 40% 50%, #aa7700aa, transparent 80%);
 }
 .dark .mainBg {
-    background: #a70;
+    @apply bg-[#a70];
 }
 label, input, p, button {
     @apply text-[16px];

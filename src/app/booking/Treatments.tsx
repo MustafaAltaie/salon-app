@@ -10,7 +10,7 @@ interface Props {
 
 const Treatments = ({ treatments, handleTreatments, selectedT, setStep }: Props) => {
     return (
-        <div>
+        <div className='lg:w-[500px] lg:mx-auto'>
             <div>
                 <h3 className='mainColor mb-3'>Choose a treatment</h3>
                 <p className='opacity-75'>Start by selecting the service you are interested in — haircut, beard trim, massage, facial, or any other treatment.</p>
@@ -19,7 +19,7 @@ const Treatments = ({ treatments, handleTreatments, selectedT, setStep }: Props)
                 {treatments.map(treatment =>
                 <div
                     key={treatment.icon}
-                    className={`touch-manipulation w-[calc(100%/3)] h-25 flex flex-col items-center justify-center text-center ${selectedT.includes(treatment.title) ? 'border-[#EEE8DC77] border-[0.5px] dark:border-[1px] dark:border-dashed dark:border-[#070] bg-[#000]' : 'border-[0.5px] border-[#aa770077]'}`}
+                    className={`touch-manipulation cursor-pointer w-[calc(100%/3)] h-25 flex flex-col items-center justify-center text-center ${selectedT.includes(treatment.title) ? 'border-[#EEE8DC77] border-[0.5px] dark:border-[1px] dark:border-dashed dark:border-[#070] bg-[#000]' : 'border-[0.5px] border-[#aa770077]'}`}
                     onClick={() => handleTreatments(treatment.title)}
                 >
                     <img

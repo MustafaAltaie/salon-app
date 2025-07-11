@@ -6,6 +6,7 @@ import Calendar from './Calendar';
 import Treatments from './Treatments';
 import { TreatmentProps } from '../../../types/Treatments';
 import TimePick from './TimePick';
+import { XMarkIcon } from '@heroicons/react/24/solid';
 
 const Booking = () => {
     const [laptop, setLaptop] = useState(false);
@@ -60,10 +61,13 @@ const Booking = () => {
             title: 'Lipstick'
         },
     ];
-    const [selectedT, setSelectedT] = useState<string[]>([]);
-    const [selected, setSelected] = useState<Date | undefined>();
+    const [selectedT, setSelectedT] = useState<string[]>([]); // selected treatments
+    const [selected, setSelected] = useState<Date | undefined>(); // selected date
     const [step, setStep] = useState(1);
-    const [thisDay, setThisDay] = useState<string>('');
+    const [thisTime, setThisTime] = useState<string>(''); // selected time
+    const [terms, setTerms] = useState(false);
+    const [showTerms, setShowTerms] = useState(false);
+    const termsText: string = "By making a booking, you agree to our appointment policy which requires timely arrival, as late arrivals may result in a shortened service or rescheduling. Please notify us at least 24 hours in advance if you need to cancel, as late cancellations or no-shows may incur a fee. It is important to inform us of any allergies, medical conditions, or skin sensitivities before your appointment. Payments are due at the time of your service unless otherwise arranged. We respect your privacy and will keep your personal information confidential, using it only for booking and communication purposes. We may update these terms occasionally, and any changes will be communicated to you. Thank you for choosing our salon; we look forward to providing you with excellent service."
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -108,6 +112,15 @@ const Booking = () => {
         <Header laptop={laptop} />
         <section className='overflow-x-hidden'>
             {/* main wrapper */}
+            {showTerms &&
+                <div className='fixed w-full h-full z-10 p-10 lg:px-50 bg-[#EEE8DC] dark:bg-[#222]'>
+                    <div className='flex justify-between mb-5'>
+                        <h3 className='mainColor'>Terms and conditions</h3>
+                        <XMarkIcon className='w-5 cursor-pointer' onClick={() => setShowTerms(false)} />
+                    </div>
+                    <p>{termsText}</p>
+                </div>
+            }
             <div className='p-10'>
                 {step === 1 &&
                     <Treatments
@@ -127,10 +140,54 @@ const Booking = () => {
                 {step === 3 &&
                     <TimePick
                         timeSlots={timeSlots}
-                        setThisDay={setThisDay}
-                        thisDay={thisDay}
+                        setThisTime={setThisTime}
+                        thisTime={thisTime}
                         setStep={setStep}
                     />
+                }
+                {step === 4 &&
+                    <div className='lg:w-[400px] lg:mx-auto'>
+                        <div>
+                            <div>
+                                <h3 className='mainColor mb-3 font-bold'>Booking review</h3>
+                                <p className='opacity-75 mb-5'>Almost done! Check your booking details and confirm your appointment.</p>
+                            </div>
+                            <div>
+                                <h4 className='mainColor'>Chosen treatments</h4>
+                                <ul className='list-disc ml-3'>
+                                    {selectedT.map(item =>
+                                    <li key={item} className='text-sm'>{item}</li>)}
+                                </ul>
+                            </div>
+                            <div className='my-5'>
+                                <h4 className='mainColor'>Chosen date</h4>
+                                <p>{selected!.toDateString()}</p>
+                            </div>
+                            <div>
+                                <h4 className='mainColor'>Chosen time</h4>
+                                <p>{thisTime}</p>
+                            </div>
+                        </div>
+                        <form className='flex flex-col gap-3 border-t-[0.5px] mt-5 pt-5'>
+                            <div className='flex flex-col'>
+                                <label htmlFor="clientName">Your full name*</label>
+                                <input type="text" className='border-[0.5px] border-[#00000077] dark:border-[#ffffff77] p-2 rounded-xl' id='clientName' placeholder='e.g. John Anderson' required />
+                            </div>
+                            <div className='flex flex-col'>
+                                <label htmlFor="clientNumber">Your number*</label>
+                                <input type="text" className='border-[0.5px] border-[#00000077] dark:border-[#ffffff77] p-2 rounded-xl' id='clientNumber' placeholder='e.g. John@gmail.com' required />
+                            </div>
+                            <div>
+                                <input type="checkbox" id='acceptTerm' className='cursor-pointer' checked={terms} onChange={() => setTerms(!terms)} />
+                                <label htmlFor="acceptTerm" className='pl-2 cursor-pointer'>I have read and agree to the </label>
+                                <span className='text-[#06a] dark:text-[#09d] lg:text-xs cursor-pointer' onClick={() => setShowTerms(true)}>Terms and Conditions.</span>
+                            </div>
+                            <div className='flex gap-5'>
+                                <p className='mainBg w-full rounded-lg p-3 text-white text-center cursor-pointer' onClick={() => setStep(3)}>Back</p>
+                                <button className={`p-3 rounded-xl w-full text-white ${terms ? 'mainBg' : 'bg-[#777] pointer-events-none'}`}>Confirm order</button>
+                            </div>
+                        </form>
+                    </div>
                 }
             </div>
         </section>
