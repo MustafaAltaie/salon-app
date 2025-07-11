@@ -15,6 +15,9 @@ body.dark, .dark header {
     background: #222;
     color: #eee;
 }
+section {
+    overflow-x: hidden;
+}
 
 label {
     user-select: none;
