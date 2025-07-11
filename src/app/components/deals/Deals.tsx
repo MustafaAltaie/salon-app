@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import './Deals.css';
+import { motion } from 'framer-motion';
 
 interface DealProps {
     id: string
@@ -57,7 +58,13 @@ const Deals = () => {
                 {deals.map((item, index) =>
                 <div key={item.id} className='border-t-[0.5px] border-[#00000055] dark:border-[#ffffff33] flex items-center bg-[#dcd0b8] dark:bg-[#333]'>
                     <div className='dealImageWrapper w-1/2 p-5'>
-                        <div className={`h-[120px] border-[0.5px] border-[#00000055] dark:border-[#ffffff55] overflow-hidden ${index % 2 === 0 ? 'rounded-tr-[50px] rounded-br-[50px]' : 'rounded-tl-[50px] rounded-bl-[50px]'}`}>
+                        <motion.div
+                            className={`h-[120px] border-[0.5px] border-[#00000055] dark:border-[#ffffff55] overflow-hidden ${index % 2 === 0 ? 'rounded-tr-[50px] rounded-br-[50px]' : 'rounded-tl-[50px] rounded-bl-[50px]'}`}
+                            initial={{ opacity: 0, x: 100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                        >
                             <Image
                                 className='h-full w-full object-cover'
                                 src={item.image}
@@ -66,14 +73,20 @@ const Deals = () => {
                                 height={200}
                                 loading='lazy'
                             />
-                        </div>
+                        </motion.div>
                     </div>
-                    <div className={'dealDetailsWrapper w-1/2 px-[20px]'}>
+                    <motion.div
+                        className={'dealDetailsWrapper w-1/2 px-[20px]'}
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                    >
                         <div className={`${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                             <h5 className='mainColor lg:font-[200]'>{item.title}</h5>
                             <h6 className='opacity-70 dark:font-[200]'>{item.descrition}</h6>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>)}
             </div>
         </section>

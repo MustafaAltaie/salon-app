@@ -1,5 +1,6 @@
 import React from 'react';
 import { TreatmentProps } from '../../../types/Treatments';
+import { motion } from 'framer-motion';
 
 interface Props {
     treatments: TreatmentProps[]
@@ -17,10 +18,14 @@ const Treatments = ({ treatments, handleTreatments, selectedT, setStep }: Props)
             </div>
             <div className='flex flex-wrap justify-stretch py-5'>
                 {treatments.map(treatment =>
-                <div
+                <motion.div
                     key={treatment.icon}
                     className={`touch-manipulation cursor-pointer w-[calc(100%/3)] h-25 flex flex-col items-center justify-center text-center ${selectedT.includes(treatment.title) ? 'border-[#EEE8DC77] border-[0.5px] dark:border-[1px] dark:border-dashed dark:border-[#070] bg-[#000]' : 'border-[0.5px] border-[#aa770077]'}`}
                     onClick={() => handleTreatments(treatment.title)}
+                    initial={{ opacity: 0, scale: 1.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true, amount: 0.3 }}
                 >
                     <img
                         src={`/icons/${treatment.icon}.svg`}
@@ -28,13 +33,20 @@ const Treatments = ({ treatments, handleTreatments, selectedT, setStep }: Props)
                         className='w-10 h-10'
                     />
                     <p className='mainColor'>{treatment.title}</p>
-                </div>)}
+                </motion.div>)}
             </div>
             {selectedT.length !== 0 &&
                 <div>
                     <h3 className='mainColor'>Selected treatments - {selectedT.length}</h3>
                     <ul className='list-disc ml-3'>
-                        {selectedT.map(item =><li key={item}>{item}</li>)}
+                        {selectedT.map(item =>
+                        <motion.li
+                            key={item}
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                        >{item}</motion.li>)}
                     </ul>
                     {selectedT.length !== 0 &&
                     <button className='mainBg w-full rounded-lg p-3 text-[#fff] mt-5' onClick={() => setStep(2)}>Next</button>}

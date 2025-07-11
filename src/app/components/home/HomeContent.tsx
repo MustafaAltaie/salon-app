@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface HaircutProps {
     id: string
@@ -58,14 +59,33 @@ const Home = () => {
                     />
                 </div>)}
                 <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center lg:w-[400px] w-[90%]'>
-                    <h1 className='font-bold mb-2 text-white'>Our Work Speaks for Itself</h1>
-                    <h4 className='text-white font-[200]'>We take pride in every cut, style, and treatment delivering personalized results that leave our clients confident, fresh, and satisfied.</h4>
+                    <motion.h1
+                        className='font-bold mb-2 text-white'
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, amount: 0 }}
+                    >Our Work Speaks for Itself</motion.h1>
+                    <motion.h4
+                        className='text-white font-[200]'
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, amount: 0 }}
+                    >We take pride in every cut, style, and treatment delivering personalized results that leave our clients confident, fresh, and satisfied.</motion.h4>
                 </div>
             </div>
             <h2 className='text-center p-2 mainColor' style={{ fontFamily: '"Luxurious Script", cursive' }}>Women haircuts</h2>
             <div className='flex flex-wrap lg:w-[500px] mx-auto'>
                 {womanList.map(item =>
-                <div key={item.id} className='w-[calc(100%/2)] h-[200px] border-1 border-[#EEE8DC] dark:border-[#222]'>
+                <motion.div
+                    key={item.id}
+                    className='w-[calc(100%/2)] h-[200px] border-1 border-[#EEE8DC] dark:border-[#222]'
+                    initial={{ opacity: 0, scale: 1.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
                     <Image
                         className={item.classes}
                         src={`/images/${item.image}`}
@@ -73,7 +93,7 @@ const Home = () => {
                         width={250}
                         height={250}
                     />
-                </div>)}
+                </motion.div>)}
             </div>
         </section>
     )

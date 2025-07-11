@@ -1,28 +1,15 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Header from '../components/header/Header';
-import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import Footer from '../components/footer/Footer';
-
-interface PriceProps {
-    id: string
-    category: string
-    icon: string
-    price: number
-    description: string
-}
-
-interface SmallListProps {
-    id: string
-    category: string
-    price: number
-}
+import { PriceProps } from '../../../types/Price';
+import Prise from './Prise';
+import { SmallListProps } from '../../../types/SmallList';
+import PriseDetails from './PriseDetails';
 
 const PriceList = () => {
     const [laptop, setLaptop] = useState(false);
     const [mounted, setMounted] = useState(false);
-    const colors: string[] = ['#a70', '#07a'];
     const [prices] = useState<PriceProps[]>([
         {
             id: '1',
@@ -223,27 +210,8 @@ const PriceList = () => {
                 <div className='flex flex-col gap-5'>
                     {/* Card */}
                     {prices.map((price, index) =>
-                    <div key={price.id} className='rounded-2xl overflow-hidden'>
-                        <div style={{ borderRight: `solid 7px ${colors[index % colors.length]}` }} className='flex flex-col gap-2 px-5 py-3 bg-[#0000000f] dark:bg-[#ffffff0a]'>
-                            <div style={{ color: colors[index % colors.length] }} className='flex justify-between'>
-                                <h3>{price.category}</h3>
-                                <h3>${price.price}</h3>
-                            </div>
-                            <div className='flex justify-between gap-5 items-center'>
-                                <div className='w-30'>
-                                    <Image
-                                        className='opacity-40 filter dark:invert'
-                                        src={price.icon}
-                                        alt='Image'
-                                        width={100}
-                                        height={100}
-                                        loading='lazy'
-                                    />
-                                </div>
-                                <h6 className='opacity-75'>{price.description}</h6>
-                            </div>
-                        </div>
-                    </div>)}
+                        <Prise key={index} price={price} index={index} />
+                    )}
                 </div>
             </div>
             <div className={`border-t-[0.5px] border-[#00000055] dark:border-[#ffffff55] pt-7 mt-10 pb-5 ${laptop ? 'w-[500px] mx-auto' : ''}`}>
@@ -253,78 +221,43 @@ const PriceList = () => {
                         <h4 className='text-[#07a] font-bold'>Haircuts</h4>
                         <div className='list-disc flex flex-col gap-2 mt-2'>
                             {hairCuts.map(item =>
-                            <div key={item.id} className='opacity-70 flex justify-between border-b-[0.5px] border-dashed border-[#00000077] dark:border-[#ffffff77]'>
-                                <div className='flex gap-1'>
-                                    <CheckCircleIcon className='w-4 mainColor' />
-                                    <p>{item.category}</p>
-                                </div>
-                                <p className='mainColor'>${item.price}</p>
-                            </div>)}
+                                <PriseDetails key={item.id} item={item} />
+                            )}
                         </div>
                     </div>
                     <div style={ laptop ? { width: 'calc(100%/2 - 50px/2)' } : {}}>
                         <h4 className='text-[#07a] font-bold'>Beard & Grooming</h4>
                         <div className='list-disc flex flex-col gap-2 mt-2'>
                             {beardGrooming.map(item =>
-                            <div key={item.id} className='opacity-70 flex justify-between border-b-[0.5px] border-dashed border-[#00000077] dark:border-[#ffffff77]'>
-                                <div className='flex gap-1'>
-                                    <CheckCircleIcon className='w-4 mainColor' />
-                                    <p>{item.category}</p>
-                                </div>
-                                <p className='mainColor'>${item.price}</p>
-                            </div>)}
+                            <PriseDetails key={item.id} item={item} />)}
                         </div>
                     </div>
                     <div style={ laptop ? { width: 'calc(100%/2 - 50px/2)' } : {}}>
                         <h4 className='text-[#07a] font-bold'>Hair Coloring</h4>
                         <div className='list-disc flex flex-col gap-2 mt-2'>
                             {hairColoring.map(item =>
-                            <div key={item.id} className='opacity-70 flex justify-between border-b-[0.5px] border-dashed border-[#00000077] dark:border-[#ffffff77]'>
-                                <div className='flex gap-1'>
-                                    <CheckCircleIcon className='w-4 mainColor' />
-                                    <p>{item.category}</p>
-                                </div>
-                                <p className='mainColor'>${item.price}</p>
-                            </div>)}
+                            <PriseDetails key={item.id} item={item} />)}
                         </div>
                     </div>
                     <div style={ laptop ? { width: 'calc(100%/2 - 50px/2)' } : {}}>
                         <h4 className='text-[#07a] font-bold'>Massage & Relaxation</h4>
                         <div className='list-disc flex flex-col gap-2 mt-2'>
                             {massageRelaxation.map(item =>
-                            <div key={item.id} className='opacity-70 flex justify-between border-b-[0.5px] border-dashed border-[#00000077] dark:border-[#ffffff77]'>
-                                <div className='flex gap-1'>
-                                    <CheckCircleIcon className='w-4 mainColor' />
-                                    <p>{item.category}</p>
-                                </div>
-                                <p className='mainColor'>${item.price}</p>
-                            </div>)}
+                            <PriseDetails key={item.id} item={item} />)}
                         </div>
                     </div>
                     <div style={ laptop ? { width: 'calc(100%/2 - 50px/2)' } : {}}>
                         <h4 className='text-[#07a] font-bold'>Facial & Skin Care</h4>
                         <div className='list-disc flex flex-col gap-2 mt-2'>
                             {skinCare.map(item =>
-                            <div key={item.id} className='opacity-70 flex justify-between border-b-[0.5px] border-dashed border-[#00000077] dark:border-[#ffffff77]'>
-                                <div className='flex gap-1'>
-                                    <CheckCircleIcon className='w-4 mainColor' />
-                                    <p>{item.category}</p>
-                                </div>
-                                <p className='mainColor'>${item.price}</p>
-                            </div>)}
+                            <PriseDetails key={item.id} item={item} />)}
                         </div>
                     </div>
                     <div style={ laptop ? { width: 'calc(100%/2 - 50px/2)' } : {}}>
                         <h4 className='text-[#07a] font-bold'>Styling & Blow Dry</h4>
                         <div className='list-disc flex flex-col gap-2 mt-2'>
                             {blowDry.map(item =>
-                            <div key={item.id} className='opacity-70 flex justify-between border-b-[0.5px] border-dashed border-[#00000077] dark:border-[#ffffff77]'>
-                                <div className='flex gap-1'>
-                                    <CheckCircleIcon className='w-4 mainColor' />
-                                    <p>{item.category}</p>
-                                </div>
-                                <p className='mainColor'>${item.price}</p>
-                            </div>)}
+                            <PriseDetails key={item.id} item={item} />)}
                         </div>
                     </div>
                 </div>

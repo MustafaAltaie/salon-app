@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 interface StafProps {
     id: string
@@ -52,15 +53,34 @@ const Staf = ({ laptop }: Props) => {
             {staf.map(worker => pathname === '/' ?
             // without roll
             <div key={worker.id} className='mt-5 flex flex-col items-center' style={{ width: 'calc(100%/4 - 30px/4)' }}>
-                <Image
-                    className='rounded-full w-[80px] h-[80px] object-cover'
-                    src={worker.image}
-                    alt='Staf'
-                    width={100}
-                    height={100}
-                />
-                <h6 className='mainColor'>{worker.name}</h6>
-                <h6 className='text-black'>{worker.position}</h6>
+                <motion.div
+                    initial={{ opacity: 0, scale: 1.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    <Image
+                        className='rounded-full w-[80px] h-[80px] object-cover'
+                        src={worker.image}
+                        alt='Staf'
+                        width={100}
+                        height={100}
+                    />
+                </motion.div>
+                <motion.h6
+                    className='mainColor'
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                >{worker.name}</motion.h6>
+                <motion.h6
+                    className='text-black'
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                >{worker.position}</motion.h6>
             </div> :
             // with roll
             <div key={worker.id} className='flex gap-2 items-center' style={{ width: laptop ? 'calc(100%/4 - 30px/4)' : 'calc(100%/2 - 10px/2)' }}>
@@ -73,8 +93,20 @@ const Staf = ({ laptop }: Props) => {
                     height={100}
                 />
                 <div>
-                    <h6 className='mainColor'>{worker.name}</h6>
-                    <h6 style={{ fontSize: '10px', opacity: '0.5' }}>{worker.roll}</h6>
+                    <motion.h6
+                        className='mainColor'
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                    >{worker.name}</motion.h6>
+                    <motion.h6
+                        style={{ fontSize: '10px', opacity: '0.5' }}
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                    >{worker.roll}</motion.h6>
                 </div>
             </div>)}
         </div>

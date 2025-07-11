@@ -7,7 +7,9 @@ import Reviews from '../reusableComponents/Reviews';
 import { ReviewProps } from '../../../types/Review';
 import { AboutList } from '../../../types/AboutList';
 import Mission from './Mission';
-import Image from 'next/image';
+import SlideShow from './SlideShow';
+import SlideshowList from './SlideshowList';
+import { motion } from 'framer-motion';
 
 const About = () => {
     const [laptop, setLaptop] = useState(false);
@@ -119,53 +121,19 @@ const About = () => {
         <section className='overflow-x-hidden'>
             <div>
                 {/* hero images slideshow */}
-                <div className={`relative ${laptop ? 'w-[500px] mx-auto' : ''}`}>
-                    <div className={`relative ${laptop ? 'h-[400px]' : 'h-[500px]'}`}>
-                        {heroImages.map((image, index) =>
-                        <div
-                            key={(index)}
-                            className='w-full h-full absolute top-0 left-0 flex transition-opacity duration-2000'
-                            style={{ opacity: index === count ? 1 : 0 }}
-                        >
-                            <Image
-                                className='w-full h-full object-cover object-center pointer-events-none'
-                                src={image}
-                                alt='Image'
-                                width={500}
-                                height={500}
-                                loading='lazy'
-                            />
-                        </div>)}
-                    </div>
-                    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center'>
-                        <h1 className='font-bold mb-2 text-white'>Our Work Speaks for Itself</h1>
-                        <p className='text-[#b82]'>We take pride in every cut, style, and treatment delivering personalized results that leave our clients confident, fresh, and satisfied.</p>
-                    </div>
-                </div>
+                <SlideShow heroImages={heroImages} count={count} />
                 {/* hero images list */}
-                <div className={`flex flex-wrap gap-[10px] ${laptop ? 'w-[500px] mx-auto py-[10px]' : 'p-[10px] border-b-[0.5px]'}`}>
-                    {heroImages.map((image, index) =>
-                    <div
-                        key={index}
-                        className='h-[80px] cursor-pointer'
-                        style={{ width: 'calc(100%/4 - 30px/4)', border: index === count ? 'solid 5px #08a' : 'solid 5px #a70' }}
-                        onClick={() => setCount(index)}
-                    >
-                        <Image
-                            className='w-full h-full object-cover pointer-events-none'
-                            src={image}
-                            alt='image'
-                            width={200}
-                            height={200}
-                            loading='lazy'
-                        />
-                    </div>
-                    )}
-                </div>
+                <SlideshowList heroImages={heroImages} count={count} setCount={setCount} />
                 {/* about text */}
                 <div className={`px-10 pt-3 pb-5 border-t-[0.5px] border-b-[0.5px] ${laptop ? 'w-[900px] mx-auto' : ''}`}>
                     <h3 className='mainColor'>About us</h3>
-                    <p className={!laptop ? 'font-[200]' : ''}>At our salon, beauty meets expertise. We are a team of skilled professionals passionate about helping you look and feel your best. From precision haircuts and beard grooming to rejuvenating skincare and relaxing treatments, we focus on delivering personalized service in a clean, welcoming environment. With attention to detail, high-quality products, and modern techniques, we make every visit an experience — not just an appointment.</p>
+                    <motion.p
+                        className={!laptop ? 'font-[200]' : ''}
+                        initial={{ opacity: 0, scale: 1.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                    >At our salon, beauty meets expertise. We are a team of skilled professionals passionate about helping you look and feel your best. From precision haircuts and beard grooming to rejuvenating skincare and relaxing treatments, we focus on delivering personalized service in a clean, welcoming environment. With attention to detail, high-quality products, and modern techniques, we make every visit an experience — not just an appointment.</motion.p>
                 </div>
                 {/* staff */}
                 <div className={laptop ? 'w-[900px] mx-auto pt-5' : ''}>
