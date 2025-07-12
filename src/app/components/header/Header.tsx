@@ -51,6 +51,12 @@ const navList: navProps[] = [
         icon: 'fa-solid fa-clock',
         target: '/booking',
     },
+    {
+        id: '7',
+        title: 'My account',
+        icon: 'fa-solid fa-user',
+        target: '/account',
+    },
 ];
 
 const Header = ({ laptop }: Props) => {
