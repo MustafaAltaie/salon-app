@@ -1,22 +1,26 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Header from '../components/header/Header';
-// import { UserProps } from '../../../types/User';
+import { UserProps } from '../../../types/User';
 import './login.css';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import Footer from '../components/footer/Footer';
+import { useCreateAccountMutation } from '../../../features/logins/signApi';
 
 const Login = () => {
     const [login, setLogin] = useState(false);
     const [laptop, setLaptop] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-    // const [user, setUser] = useState<UserProps>({
-    //     id: '1',
-    //     name: 'Mustafa Altaie',
-    //     email: 'mustafa@gmail.com',
-    //     number: '+460763122455',
-    // });
+    const [createAccount] = useCreateAccountMutation();
+    const [user, setUser] = useState<UserProps>({
+        id: '',
+        username: '',
+        email: '',
+        mobile: '',
+        password: '',
+        confirmed: '',
+    });
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -30,6 +34,27 @@ const Login = () => {
         return () => window.removeEventListener('resize', checkWidth);
     }, []);
 
+    const prepareSave = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setUser(prev => ({
+            ...prev, [name]: value
+        }));
+    }
+
+    const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (user.password !== user.confirmed) {
+            alert('Passwords not matched');
+            return;
+        }
+        try {
+            await createAccount(user).unwrap();
+        } catch (err) {
+            console.error(err);
+            alert('Error signing up');
+        }
+    }
+
     if (!isMounted) return null;
 
     return (
@@ -39,7 +64,7 @@ const Login = () => {
             {!laptop && <h1 className='mt-5 mainColor'>{login ? 'Sign in' : 'Sign up'}</h1>}
             <div className='lg:w-[40%] w-full'>
                 {login && <LoginForm setLogin={setLogin} />}
-                {!login && <SignupForm setLogin={setLogin} />}
+                {!login && <SignupForm setLogin={setLogin} prepareSave={prepareSave} handleSignup={handleSignup} />}
             </div>
         </section>
         <Footer laptop={laptop} />

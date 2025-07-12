@@ -1,8 +1,10 @@
 export interface UserProps {
     id?: string
     _id?: string
-    name: string
+    username: string
     email: string
-    number: string
+    mobile: string
     image?: string
+    password: string
+    confirmed?: string
 }
