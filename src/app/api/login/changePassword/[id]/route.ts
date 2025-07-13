@@ -1,13 +1,12 @@
 import dbConnect from "../../../../../../lib/mongodb";
 import User from "../../../../../../lib/models/signupModel";
-import { NextRequest } from 'next/server';
 
 export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   await dbConnect();
-  const { id } = params;
+  const { id } = await params;
 
   try {
     const body = await req.json();
