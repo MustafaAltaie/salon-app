@@ -1,8 +1,9 @@
 import dbConnect from "../../../../../../lib/mongodb";
 import User from "../../../../../../lib/models/signupModel";
+import { NextRequest } from 'next/server';
 
 export async function PATCH(
-  req: Request,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
   await dbConnect();
