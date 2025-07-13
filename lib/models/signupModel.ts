@@ -9,5 +9,5 @@ const signUpSchema = new Schema<UserProps>({
     password: { type: String, required: true },
 });
 
-const Signup = models.Signup || model('Signup', signUpSchema);
-export default Signup;
+const User = models.User || model('User', signUpSchema);
+export default User;
