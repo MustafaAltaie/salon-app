@@ -14,6 +14,11 @@ interface CheckProps {
     password: string
 }
 
+interface LoginError {
+    status: number;
+    data: { error: string };
+}
+
 const LoginForm = ({ setLogin }: Props) => {
     const [show, setShow] = useState(false);
     const [obj, setObj] = useState<CheckProps>({
@@ -38,8 +43,9 @@ const LoginForm = ({ setLogin }: Props) => {
             const userData = await loginUser(obj).unwrap();
             localStorage.setItem('myAccount', JSON.stringify(userData));
             router.push('/account');
-        } catch (err: any) {
-            const errorMessage = err?.data?.error || 'Error signing in';
+        } catch (err: unknown) {
+            const error = err as LoginError;
+            const errorMessage = error?.data?.error || 'Error signing in';
             alert(errorMessage);
         } finally {
             setBusy(false);

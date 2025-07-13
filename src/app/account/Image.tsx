@@ -1,6 +1,6 @@
 import React from 'react';
 import { PencilIcon, TrashIcon, UserIcon } from '@heroicons/react/24/solid';
-import Image from 'next/image';
+//import Image from 'next/image';
 
 interface Props {
     editDel: boolean
@@ -19,7 +19,7 @@ const ImageComponent = ({ editDel, setEditDel }: Props) => {
                     <TrashIcon className='w-7 text-black' />
                 </div>
             </div>}
-            <div className='w-[300px]' onClick={() => setEditDel(true)}>
+            {/* <div className='w-[300px]' onClick={() => setEditDel(true)}>
                 <Image
                     src={'/images/1.jpg'}
                     alt='Image'
@@ -28,10 +28,10 @@ const ImageComponent = ({ editDel, setEditDel }: Props) => {
                     loading='lazy'
                     className='w-full h-full object-cover'
                 />
-            </div>
-            {/* <div className='centered border-[1px] rounded-full p-5'>
-                <UserIcon className='w-[150px]' />
             </div> */}
+            <div className='centered border-[1px] rounded-full p-5'>
+                <UserIcon className='w-[150px]' />
+            </div>
         </div>
     )
 }

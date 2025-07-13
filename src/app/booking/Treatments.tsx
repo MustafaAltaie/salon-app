@@ -1,6 +1,7 @@
 import React from 'react';
 import { TreatmentProps } from '../../../types/Treatments';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface Props {
     treatments: TreatmentProps[]
@@ -27,10 +28,13 @@ const Treatments = ({ treatments, handleTreatments, selectedT, setStep }: Props)
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true, amount: 0.3 }}
                 >
-                    <img
+                    <Image
                         src={`/icons/${treatment.icon}.svg`}
                         alt='Beard'
                         className='w-10 h-10'
+                        width={30}
+                        height={30}
+                        loading='lazy'
                     />
                     <p className='mainColor'>{treatment.title}</p>
                 </motion.div>)}
