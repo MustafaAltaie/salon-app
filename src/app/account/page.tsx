@@ -9,6 +9,7 @@ import OverflowMenu from './OverflowMenu';
 import { UserProps } from '../../../types/User';
 import { useUpdateUserMutation } from '../../../features/logins/loginApi';
 import WaitingModal from '../reusableComponents/WaitingModal';
+import { useRouter } from 'next/navigation';
 
 const Acount = () => {
     const [laptop, setLaptop] = useState(false);
@@ -26,6 +27,7 @@ const Acount = () => {
     });
     const [updateUser] = useUpdateUserMutation();
     const [busy, setBusy] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -34,6 +36,9 @@ const Acount = () => {
             setLaptop(window.innerWidth >= 1024);
         }
         checkSize();
+
+        const stored = localStorage.getItem('myAccount');
+        if (!stored) router.push('/login');
 
         window.addEventListener('resize', checkSize);
         return () => window.removeEventListener('resize', checkSize);
@@ -79,13 +84,20 @@ const Acount = () => {
         <>
         <Header laptop={laptop} />
         {busy && <WaitingModal />}
-        <section>
-            <div className='relative flex flex-col items-center p-10'>
-                <Cog6ToothIcon className={`${menu ? 'translate-x-[120%]' : 'translate-x-[0px]'} transition-transform duration-500 w-10 p-2 absolute top-3 right-3`} onClick={() => setMenu(true)} />
-                {editDel && <XMarkIcon className='w-10 p-2 absolute left-10' onClick={() => setEditDel(false)} />}
-                <ImageComponent editDel={editDel} setEditDel={setEditDel} />
+        <section className='lg:w-[800px] lg:mx-auto lg:border-l-[0.5px] lg:border-r-[0.5px] lg:border-[#00000077] lg:dark:border-[#ffffff77]'>
+            <div className='relative flex flex-col items-center p-10 lg:flex-row lg:gap-10'>
+                <Cog6ToothIcon className={`${menu ? 'translate-x-[120%]' : 'translate-x-[0px]'} transition-transform duration-500 w-10 p-2 absolute top-3 right-3 cursor-pointer`} onClick={() => setMenu(true)} />
+                {editDel &&
+                <XMarkIcon className='w-10 p-2 absolute left-10 lg:left-0 cursor-pointer' onClick={() => setEditDel(false)} />}
+                <ImageComponent
+                    editDel={editDel}
+                    setEditDel={setEditDel}
+                    myDetails={myDetails}
+                    setMyDetails={setMyDetails}
+                />
                 <Form
                     myDetails={myDetails}
+                    setMyDetails={setMyDetails}
                     prepareObj={prepareObj}
                     handleUpdate={handleUpdate}
                     busy={busy}

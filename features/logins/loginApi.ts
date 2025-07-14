@@ -15,12 +15,22 @@ export const signApi = api.injectEndpoints({
             query: ({ id, newPassword }) => ({ url: `/api/login/changePassword/${id}`, method: 'PATCH', body: { newPassword } }),
             invalidatesTags: ['login']
         }),
+        uploadImage: builder.mutation<void, FormData>({
+            query: (formData) => ({ url: '/api/login/image', method: 'POST', body: formData }),
+            invalidatesTags: ['login']
+        }),
+        deleteImage: builder.mutation<void, string>({
+            query: (imageName) => ({ url: `/api/login/deleteImage/${imageName}`, method: 'DELETE' }),
+            invalidatesTags: ['login']
+        }),
     }),
-    overrideExisting: true
+    overrideExisting: true,
 });
 
 export const {
     useLoginUserMutation,
     useUpdateUserMutation,
     useChangePasswordMutation,
+    useUploadImageMutation,
+    useDeleteImageMutation,
 } = signApi;

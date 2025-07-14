@@ -70,7 +70,7 @@ const Header = ({ laptop }: Props) => {
           setNav(window.innerWidth >= 1024);
         }
         checkSize();
-    
+
         window.addEventListener('resize', checkSize);
         return () => window.removeEventListener('resize', checkSize);
     }, []);

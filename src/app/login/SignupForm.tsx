@@ -40,13 +40,13 @@ const SignupForm = ({ setLogin, prepareSave, handleSignup }: Props) => {
                     {show && <EyeIcon className='lg:w-4 w-5 mainColor cursor-pointer' onClick={() => setShow(false)} />}
                     <label className='mainColor' htmlFor="passwordText">Password</label>
                 </div>
-                <input type="password" required id='passwordText' name='password' autoComplete='off' placeholder='Password' onChange={prepareSave} />
+                <input type={show ? 'text' : 'password'} required id='passwordText' name='password' autoComplete='off' placeholder='Password' onChange={prepareSave} />
             </div>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
                     <label className='mainColor' htmlFor="confirmText">Confirm password</label>
                 </div>
-                <input type="password" required id='confirmText' name='confirmed' autoComplete='off' placeholder='Confirm password' onChange={prepareSave} />
+                <input type={show ? 'text' : 'password'} required id='confirmText' name='confirmed' autoComplete='off' placeholder='Confirm password' onChange={prepareSave} />
             </div>
             <div className='flex justify-between'>
                 <p className='text-lg'>Have an acount? <span className='mainColor cursor-pointer' onClick={() => setLogin(true)}>Sign in</span></p>

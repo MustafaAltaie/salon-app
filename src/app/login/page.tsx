@@ -7,9 +7,10 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import Footer from '../components/footer/Footer';
 import { useCreateAccountMutation } from '../../../features/logins/signApi';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
-    const [login, setLogin] = useState(false);
+    const [login, setLogin] = useState(true);
     const [laptop, setLaptop] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const [createAccount] = useCreateAccountMutation();
@@ -21,14 +22,22 @@ const Login = () => {
         password: '',
         confirmed: '',
     });
+    const router = useRouter();
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
-        setIsMounted(true);
         const checkWidth = () => {
             setLaptop(window.innerWidth >= 1024);
         }
         checkWidth();
+
+        const stored = localStorage.getItem('myAccount');
+        if (stored) {
+            router.push('/account');
+            return;
+        }
+
+        setIsMounted(true);
 
         window.addEventListener('resize', checkWidth);
         return () => window.removeEventListener('resize', checkWidth);

@@ -60,7 +60,7 @@ const LoginForm = ({ setLogin }: Props) => {
                     <EnvelopeIcon className='lg:w-4 w-5 mainColor' />
                     <label className='mainColor' htmlFor="emailText">Email address</label>
                 </div>
-                <input type="email" id='emailText' autoComplete='off' placeholder='e.g. John@gmail.com' name='email' value={obj.email} onChange={prepareObj} />
+                <input type="email" id='emailText' autoComplete='email' placeholder='e.g. John@gmail.com' name='email' value={obj.email} onChange={prepareObj} />
             </div>
             <div className='flex flex-col gap-1'>
                 <div className='flex gap-2'>
@@ -68,7 +68,7 @@ const LoginForm = ({ setLogin }: Props) => {
                     {show && <EyeIcon className='lg:w-4 w-5 mainColor cursor-pointer' onClick={() => setShow(false)} />}
                     <label className='mainColor' htmlFor="mobileText">Password</label>
                 </div>
-                <input type="password" id='mobileText' autoComplete='off' placeholder='Password' name='password' value={obj.password} onChange={prepareObj} />
+                <input type={show ? 'text' : 'password'} id='mobileText' autoComplete='current-password' placeholder='Password' name='password' value={obj.password} onChange={prepareObj} />
             </div>
             <div className='flex flex-col gap-3 mt-2'>
                 <button type='submit' className='flex justify-center items-end gap-1 mainBg text-white rounded-xl bg-[#e9e9e9] dark:bg-[#333] py-2'>Sign in<ArrowLongRightIcon className='w-5 lg:w-4' /></button>

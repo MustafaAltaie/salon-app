@@ -1,9 +1,10 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import { TrashIcon, XMarkIcon, BackspaceIcon, KeyIcon } from '@heroicons/react/24/solid';
+import { TrashIcon, XMarkIcon, BackspaceIcon, KeyIcon, ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/solid';
 import { useChangePasswordMutation } from '../../../features/logins/loginApi';
 import WaitingModal from '../reusableComponents/WaitingModal';
 import { UserProps } from '../../../types/User';
+import { useRouter } from 'next/navigation';
 
 interface Props {
     menu: boolean
@@ -29,6 +30,7 @@ const OverflowMenu = ({ menu, setMenu }: Props) => {
         image: '',
         password: '',
     });
+    const router = useRouter();
 
     useEffect(() => {
         const stored = localStorage.getItem('myAccount');
@@ -68,11 +70,22 @@ const OverflowMenu = ({ menu, setMenu }: Props) => {
         }
     }
 
+    const handleSignout = () => {
+        try {
+            localStorage.removeItem('myAccount');
+            router.push('/login');
+        } catch (err) {
+            console.error(err);
+            alert('Error signing out');
+        }
+    }
+
     return (
         <>
         {busy && <WaitingModal />}
         <div className={`absolute transition-transform duration-500 ${menu ? 'translate-x-0' : 'translate-x-full'} rounded-l-4xl bg-[#ffffffcc] dark:bg-[#444444cc] top-2 right-0 p-3`}>
-            <p className='p-5 lg:p-2 flex gap-2 items-end justify-between' onClick={() => {setChange(!change); setTimeout(() => oldRef.current?.focus(), 100)}}>Change password <KeyIcon className='w-5' /></p>
+            <p className='px-4 w-fit ml-auto cursor-pointer' onClick={() => setMenu(false)}><XMarkIcon className='w-5 cursor-pointer' /></p>
+            <p className='p-5 lg:p-2 flex gap-2 items-end justify-between cursor-pointer' onClick={() => {setChange(!change); setTimeout(() => oldRef.current?.focus(), 100)}}>Change password <KeyIcon className='w-5' /></p>
             <div className='flex flex-col gap-2'>
                 {!correct && change &&
                 <input
@@ -103,9 +116,9 @@ const OverflowMenu = ({ menu, setMenu }: Props) => {
                 {newText &&
                 <button className='mainBg rounded-lg p-2 text-white' onClick={handleChange}>Update password</button>}
             </div>
-            <p className='p-5 lg:p-2 flex gap-2 items-end justify-between'>Erase saved data <BackspaceIcon className='w-5' /></p>
-            <p className='p-5 lg:p-2 flex gap-2 items-end justify-between'>Remove account<TrashIcon className='w-5' /></p>
-            <p className='p-5 lg:p-2 flex gap-2 items-end justify-between' onClick={() => setMenu(false)}>Close settings <XMarkIcon className='w-5' /></p>
+            <p className='p-5 lg:p-2 flex gap-2 items-end justify-between cursor-pointer'>Erase saved data <BackspaceIcon className='w-5' /></p>
+            <p className='p-5 lg:p-2 flex gap-2 items-end justify-between cursor-pointer'>Remove account<TrashIcon className='w-5' /></p>
+            <p className='p-5 lg:p-2 flex gap-2 items-end justify-between cursor-pointer' onClick={handleSignout}>Signout<ArrowRightStartOnRectangleIcon className='w-5' /></p>
         </div>
         </>
     )
