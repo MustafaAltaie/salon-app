@@ -143,7 +143,7 @@ const ImageComponent = ({ editDel, setEditDel, myDetails, setMyDetails }: Props)
             </div>
             {file &&
             <div className={`flex gap-10 p-3 justify-center ${busy ? 'hidden' : ''}`}>
-                <button onClick={() => {myDetails.image !== '' ? handleUpdate() : handleUpload()}}>{myDetails.image !== '' ? 'Update' : 'Upload'}</button>
+                <button onClick={() => myDetails.image !== '' ? handleUpdate() : handleUpload()}>{myDetails.image !== '' ? 'Update' : 'Upload'}</button>
                 <button onClick={() => setFile(null)}>Remove</button>
             </div>}
         </div>
